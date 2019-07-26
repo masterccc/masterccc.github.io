@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Crackmes.de - crackme.02.32 by geyslan</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://masterccc.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sh.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.55.6" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Crackmes.de - crackme.02.32 by geyslan</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/reverse/">Reverse</a></li>
+                            
+                                <li><a href="/realist/">Realist</a></li>
+                            
+                                <li><a href="/memo/">Memo</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/masterccc/"><i class="fa fa-github"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/reverse/cm_0232/">Crackmes.de - crackme.02.32 by geyslan</a></h4>
+    <h5>July 26, 2019</h5>
+    
+    <a href="https://masterccc.github.io/tags/elf"><kbd class="item-tag">ELF</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/crackme"><kbd class="item-tag">crackme</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/assembly"><kbd class="item-tag">assembly</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/keygen"><kbd class="item-tag">keygen</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/challenge"><kbd class="item-tag">challenge</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<p>This is a crackme level 3 (Medium) from <a href="https://crackmes.one/crackme/5ab77f6533c5d40ad448cbc2">https://crackmes.one/crackme/5ab77f6533c5d40ad448cbc2</a></p>
+
+<h1 id="fast-static-analysis">Fast static analysis</h1>
+
+<p>First, lets see what kind of file is it with <code>file</code> command :</p>
+
+<pre><code>$ file crackme.02.32
+crackme.02.32: ELF 32-bit LSB executable, Intel 80386, (SYSV), too many section (65535)
+
+</code></pre>
+
+<p>A 32 Bit ELF, with a beautiful &ldquo;too many section&rdquo;, no information about linkage or stripping. Lets go on.</p>
+
+<p>Checking the strings in the binary :</p>
+
+<p><img src="/img/geyslan_str.png" alt="GitHub Logo" /></p>
+
+<p>Judging from the &ldquo;tracing not allowed&rdquo; and &ldquo;i&rsquo;m sorry GDB..&rdquo; there are some anti-debug methods.</p>
+
+<h1 id="anti-debug">Anti-debug</h1>
+
+<p>Lets run the program :</p>
+
+<pre><code>$ ./crackme.02.32 
+Please tell me my password: testtest
+No! No! No! No! Try again.
+</code></pre>
+
+<p>Pretty classical, the program expect a password. This challenge is not hard to solve whithout debuging, but it&rsquo;s interesting to see what protections are applied and how to bypass them to make the analysis more comfortable.</p>
+
+<p>This is the tree wich determines if the program is run with a debugger, we can find it by looking at where the &ldquo;anti-debug&rdquo; strings are used :</p>
+
+<p><img src="/img/geyslan_antidbg0.png" alt="GitHub Logo" /></p>
+
+<p>There are two differents tests :</p>
+
+<ul>
+<li>Test if the program is run under gdb using this technic:</li>
+</ul>
+
+<p><em>&ldquo;When a process uses fork(2) to spawn a child process, the parent’s file descriptors are inherited to the new child process. In normal cases, the new process should have only FDs 0 (stdin), 1 (stdout) and 2 (stderr). However, GDB opens up some more FDs (3, 4 and 5) and never closes them, so they are inherited.&rdquo;</em></p>
+
+<p>Source: <a href="https://xorl.wordpress.com">https://xorl.wordpress.com</a></p>
+
+<p>As we can see, a file descriptor is created (pointing to /tmp), and his _fileno is checked, if fileno &gt; 5 the program quits !</p>
+
+<p><img src="/img/geyslan_antidbg1.png" alt="GitHub Logo" /></p>
+
+<ul>
+<li>And other block call <code>ptrace</code> function to check if the processus is traced (used by ltrace or gdb for exemple). If it is the case, the program stops :</li>
+</ul>
+
+<p><img src="/img/geyslan_antidbg.png" alt="GitHub Logo" /></p>
+
+<p>Bypass this is easy, we can just the change the :</p>
+
+<pre><code>mov eax, ds:dword_8049C08
+</code></pre>
+
+<p>into :</p>
+
+<pre><code>mov eax, 0
+</code></pre>
+
+<p>and it will never jump to the &ldquo;tracing is not allowed&rdquo; block.</p>
+
+<p>At this point, I know IDA did some special analysis because using another tool to disassemble i can&rsquo;t see where the antidebug strings are used. (If someone has the answer i&rsquo;m interested, you can pull request it).</p>
+
+<h1 id="get-the-password">Get the password</h1>
+
+<p>Following the execution stream in <code>main</code> function, we can see that our input is used as parameter and passed to a function. This function loops over the chars and applies a binary OR operation with the <code>0x90h</code> value.</p>
+
+<p><img src="/img/geyslan_while.png" alt="GitHub Logo" /></p>
+
+<p>Then, the return value is compared with a char array :</p>
+
+<p><img src="/img/geyslan_cmp.png" alt="GitHub Logo" /></p>
+
+<p>Little sum up :</p>
+
+<ul>
+<li>We enter a string</li>
+<li>This string is ORed with 0x90</li>
+
+<li><p>The result must match this char array :</p>
+
+<pre><code>[0xF7, 0xF8 ,0xF1 ,0xF4 ,0xF1 ,0xF8 ,0xB3 ,0xFC ,0xFC] #(I'll call it &quot;tab&quot;)
+</code></pre></li>
+</ul>
+
+<p>Something i&rsquo;m sure :</p>
+
+<pre><code>OR(tab,tab) == tab
+</code></pre>
+
+<p>What could match an array better than itself ? What if the input is exactly the same tab ?</p>
+
+<pre><code>$ python2 -c 'print &quot;\xF7\xF8\xF1\xF4\xF1\xF8\xB3\xFC\xFC&quot;' | ./crackme.02.32 
+Please tell me my password: The password is correct!
+Congratulations!!!
+</code></pre>
+
+<p>If we want an ascii solution, we can remove the MSB in tab (in order to have smaller numbers which fit in the readable range of the ascii table), lets script that :</p>
+
+<pre><code>#!/usr/bin/python3
+
+tab = [0xF7, 0xF8 ,0xF1 ,0xF4 ,0xF1 ,0xF8 ,0xB3 ,0xFC ,0xFC]
+
+res =  &quot;&quot;
+for elt in tab:
+        h1 = str(bin(elt))[2:] # remove '0b'
+        res += chr(int(h1[1:],2)) # remove first '1'
+
+print(&quot;result : &quot;, res)
+</code></pre>
+
+<p>And the result is : <code>wxqtqx3||</code></p>
+
+<pre><code class="language-./crackme.02.32">Please tell me my password: wxqtqx3||
+The password is correct!
+Congratulations!!!
+</code></pre>
+
+<p>In fact, there are a lot of solution (512) because we can OR a lot of values to match the key.</p>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
