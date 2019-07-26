@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>keygen on Master 0xCcC</title>
+    <link>http://127.0.0.1:1313/tags/keygen/</link>
+    <description>Recent content in keygen on Master 0xCcC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://127.0.0.1:1313/tags/keygen/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Crackmes.de - The_thing by prout</title>
+      <link>http://127.0.0.1:1313/reverse/cm_thething/</link>
+      <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/reverse/cm_thething/</guid>
+      <description>This is a crackme level 2 (Easy) from https://crackmes.one/crackme/5ab77f5433c5d40ad448c1d6 )
+Fast static analysis First, let&amp;rsquo;s see what kind of file is it with file command :
+$ file thething thething: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), for GNU/Linux 2.4.1, dynamically linked, interpreter /lib/ld-linux.so.2, no section header  Ok, so 32 bits ELF and dynamically linked (this detail will be useful later). Not sure if stripped or not because of the &amp;ldquo;no section header&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>
