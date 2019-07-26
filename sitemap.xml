@@ -3,78 +3,78 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://127.0.0.1:1313/categories/</loc>
+    <loc>https://masterccc.github.io/categories/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/reverse/cm_thething/</loc>
+    <loc>https://masterccc.github.io/reverse/cm_thething/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/tags/elf/</loc>
-    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://127.0.0.1:1313/</loc>
+    <loc>https://masterccc.github.io/tags/elf/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/reverse/</loc>
+    <loc>https://masterccc.github.io/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/tags/</loc>
+    <loc>https://masterccc.github.io/reverse/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/tags/assembly/</loc>
+    <loc>https://masterccc.github.io/tags/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/tags/challenge/</loc>
+    <loc>https://masterccc.github.io/tags/assembly/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/tags/crackme/</loc>
+    <loc>https://masterccc.github.io/tags/challenge/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/tags/keygen/</loc>
+    <loc>https://masterccc.github.io/tags/crackme/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/tags/linux/</loc>
+    <loc>https://masterccc.github.io/tags/keygen/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/categories/reverse/</loc>
+    <loc>https://masterccc.github.io/tags/linux/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/categories/writeup/</loc>
+    <loc>https://masterccc.github.io/categories/reverse/</loc>
+    <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://masterccc.github.io/categories/writeup/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
