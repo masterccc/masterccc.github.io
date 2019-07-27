@@ -6,10 +6,19 @@
     <description>Recent content on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 15:41:06 +0200</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bin/asci/hex/b64 converter</title>
+      <link>https://masterccc.github.io/tools/convert/</link>
+      <pubDate>Sat, 27 Jul 2019 15:41:06 +0200</pubDate>
+      
+      <guid>https://masterccc.github.io/tools/convert/</guid>
+      <description> Séparateur None Espace Virgule Autre  0x/0b prefix ASCII text  Base64  Base 16  Base 10  Base 2  Length (bytes)    var ld = document ; function _c8(){var e=ld._fm_._rm_.selectedIndex,c=&#34;&#34;;1==e&amp;&amp;(c=&#34; &#34;),2==e&amp;&amp;(c=&#34;,&#34;),3==e&amp;&amp;(c=&#34;,0x&#34;),4==e&amp;&amp;(c=&#34;,0b&#34;),ld._fm_.del.value=c,ld._fm_.del.readOnly=!0,5==e&amp;&amp;(ld._fm_.del.focus(),ld._fm_.del.readOnly=!1),_c0()}function _c9(){ld._fm_._rm_.selectedIndex=5,_c0()}function _cls(){ld._fm_.del.value=&#34;&#34;,ld._fm_._rm_.selectedIndex=0,_c0()}function _x(e,c){var t,n,o,a=hex=dec=bin=&#34;&#34;,l=ld._fm_.del.value,r=&#34;&#34;,d=&#34;&#34;;ld.querySelector(&#34;#prefix&#34;).checked&amp;&amp;(r=&#34;0x&#34;,d=&#34;0b&#34;);for(var m=0;m</description>
+    </item>
     
     <item>
       <title>LD_PRELOAD trick</title>

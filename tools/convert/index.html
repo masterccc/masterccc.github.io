@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bin/asci/hex/b64 converter</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://masterccc.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sh.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.55.6" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Bin/asci/hex/b64 converter</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/reverse/">Reverse</a></li>
+                            
+                                <li><a href="/realist/">Realist</a></li>
+                            
+                                <li><a href="/memo/">Memo</a></li>
+                            
+                                <li><a href="/tools/">Tools</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/masterccc/"><i class="fa fa-github"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/tools/convert/">Bin/asci/hex/b64 converter</a></h4>
+    <h5>July 27, 2019</h5>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"> 
+<div class="convertcontenair">
+
+   <form id="_fm_" name="_fm_">
+      
+
+      <label for="_rm_">Séparateur</label>
+      <select id="_rm_" name="_rm_" onchange="_c8()" class="sps">
+         <option>None</option>
+         <option selected="selected">Espace</option>
+         <option>Virgule</option>
+         <option>Autre</option>
+      </select>
+      
+      <input type="text" value=" " name="del" oninput="_c9()" class="sps" readonly="readonly">
+
+      <input type="checkbox" id="prefix" class="form-check-input" onchange="_c0()">
+      <label for="prefix" class="form-check-label">0x/0b prefix</label>
+     
+      <div class="converttitle">ASCII text</div>
+      <textarea id="txt" name="txt" rows="3" cols="60" class="sps" placeholder="Du Text" oninput="_c0()" autofocus=""></textarea>
+
+      <div class="converttitle">Base64</div>
+      <textarea id="base64" name="base64" rows="3" cols="60" class="sps" placeholder="ERMef==" oninput="_c4()"></textarea>
+
+
+      <div class="converttitle">Base 16</div>
+      <textarea id="hex" name="hex" rows="3" cols="60" class="sps" placeholder="DE AD BE 5F" oninput="_c3()"></textarea>
+     
+      <div class="converttitle">Base 10</div>
+      <textarea id="dec" name="dec" rows="3" cols="60" class="sps" placeholder="15 46 68" oninput="_c1()"></textarea>
+     
+
+      <div class="converttitle">Base 2</div>
+      <textarea id="bin" name="bin" rows="3" cols="60" class="sps" placeholder="11001111 11100011 11100110" oninput="_c2()"></textarea>
+
+      <div class="converttitle">Length (bytes)</div>
+      <input class="len" size="5" type="text" id="len" name="len" class="sps" readonly="readonly">
+
+
+   </form>
+</div>
+
+<script>
+var ld = document ;
+function _c8(){var e=ld._fm_._rm_.selectedIndex,c="";1==e&&(c=" "),2==e&&(c=","),3==e&&(c=",0x"),4==e&&(c=",0b"),ld._fm_.del.value=c,ld._fm_.del.readOnly=!0,5==e&&(ld._fm_.del.focus(),ld._fm_.del.readOnly=!1),_c0()}function _c9(){ld._fm_._rm_.selectedIndex=5,_c0()}function _cls(){ld._fm_.del.value="",ld._fm_._rm_.selectedIndex=0,_c0()}function _x(e,c){var t,n,o,a=hex=dec=bin="",l=ld._fm_.del.value,r="",d="";ld.querySelector("#prefix").checked&&(r="0x",d="0b");for(var m=0;m<e.length;m++)t=e[m].toString(16),n=e[m].toString(10),o=e[m].toString(2),1==t.length&&(t="0"+t),o.length<8&&(o="0".repeat(8-o.length)+o),n<256&&(a+=String.fromCharCode(e[m])),hex+=r+t.toUpperCase(),dec+=n,bin+=d+o,m<e.length-1&&(hex+=l,dec+=l,bin+=l);var u=_b6(a);1!=c&&(ld._fm_.txt.value=a),2!=c&&(ld._fm_.hex.value=hex),3!=c&&(ld._fm_.bin.value=bin),4!=c&&(ld._fm_.dec.value=dec),5!=c&&(ld._fm_.base64.value=u),ld._fm_.len.value=e.length,_c5()}function _c0(){var e=[],c=ld._fm_.txt.value;if(0!=c.length){for(i=0;i<c.length;i++)e[i]=c.charCodeAt(i);_x(e,1)}}function _c3(){var e=[],c=ld._fm_.hex.value;if(0!=c.length){for(c=c.match(/[0-9A-Fa-f]{1,2}/g),i=0;i<c.length;i++)e[i]=parseInt(c[i],16);_x(e,2)}}function _c2(){var e=[],c=ld._fm_.bin.value;if(0!=c.length&&(c=c.match(/[0-1]{1,8}/g))){for(i=0;i<c.length;i++)e[i]=parseInt(c[i],2);_x(e,3)}}function _c1(){var e=[],c=ld._fm_.dec.value;if(0!=c.length&&(c=c.match(/[0-9]{1,3}/g))){for(i=0;i<c.length;i++)e[i]=parseInt(c[i],10);_x(e,4)}}function _c4(){var e=ld._fm_.base64.value;0!=e.length&&_x(_b64d(e),5)}function _b6(e){return btoa(encodeURIComponent(e).replace(/%([0-9A-F]{2})/g,function(e,c){return String.fromCharCode("0x"+c)}))}function _b64d(e){return decodeURIComponent(atob(e).split("").map(function(e){return"%"+("00"+e.charCodeAt(0).toString(16)).slice(-2)}).join(""))}function _c5(){var e=ld._fm_.csbits.selectedIndex,c=ld._fm_.cstype.selectedIndex,t=[],n=ld._fm_.hex.value;if(0!=n.length&&(n=n.match(/[0-9|A-F]{2}/g))){var o=0,a=0;for(i=0;i<n.length;i++)t[i]=parseInt(n[i],16),o+=t[i],a^=t[i];2==c&&(o=a);var l=0,r=0;0==e&&(r=256,l=2),1==e&&(r=65536,l=4),2==e&&(r=4294967296,l=8),o%=r,1==c&&(o=r-o),o=(o="000000000"+(o=o.toString(16).toUpperCase())).substr(o.length-l),ld._fm_.sum.value=o}}function _c7(){ld._fm_.hex.select()}function _c6(e){1==e&&ld._fm_.txt.select(),2==e&&ld._fm_.hex.select(),3==e&&ld._fm_.dec.select(),4==e&&ld._fm_.bin.select(),ld.execCommand("copy")}
+</script>
+
+
+	</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

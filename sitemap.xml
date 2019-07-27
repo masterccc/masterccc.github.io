@@ -3,6 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://masterccc.github.io/tools/convert/</loc>
+    <lastmod>2019-07-27T15:41:06+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://masterccc.github.io/</loc>
+    <lastmod>2019-07-27T15:41:06+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://masterccc.github.io/tools/</loc>
+    <lastmod>2019-07-27T15:41:06+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://masterccc.github.io/categories/</loc>
     <lastmod>2019-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -17,12 +34,6 @@
   <url>
     <loc>https://masterccc.github.io/memo/ld_preload/</loc>
     <lastmod>2019-07-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://masterccc.github.io/</loc>
-    <lastmod>2019-07-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
