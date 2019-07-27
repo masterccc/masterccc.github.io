@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,36 @@
     <item>
       <title>ELF</title>
       <link>https://masterccc.github.io/tags/elf/</link>
-      <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/elf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hook</title>
+      <link>https://masterccc.github.io/tags/hook/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/hook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>instrumentation</title>
+      <link>https://masterccc.github.io/tags/instrumentation/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/instrumentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://masterccc.github.io/tags/linux/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
@@ -53,15 +80,6 @@
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/keygen/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://masterccc.github.io/tags/linux/</link>
-      <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://masterccc.github.io/tags/linux/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,20 @@
     <description>Recent content on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>LD_PRELOAD trick</title>
+      <link>https://masterccc.github.io/memo/ld_preload/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/memo/ld_preload/</guid>
+      <description> Cheatsheet - LD_PRELOAD trick ## Compilation
+gcc -o hook.so dlsym.c -ldl -fPIC -shared  Usage : LD_PRELOAD=$PWD/hook.so ./target  Examples Strcmp hook : #define _GNU_SOURCE #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;dlfcn.h&amp;gt; int strcmp(const char *s1, const char *s2){ printf(&amp;quot;Hook strcmp : strcmp(&#39;%s&#39;,&#39;%s&#39;)\n&amp;quot;, s1, s2); int (*true_strcmp)(const char*, const char*); true_strcmp = dlsym(RTLD_NEXT, &amp;quot;strcmp&amp;quot;); return true_strcmp(s1,s2); }  SSL inspector : #define _GNU_SOURCE #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; #include &amp;lt;dlfcn.h&amp;gt; #include &amp;lt;openssl/ssl.h&amp;gt; int SSL_write(SSL *context, const void *buffer, int size){ int (*orig_ssl_write)(SSL *context, const void *buffer, int size);	orig_ssl_write = dlysym(RTLD_NEXT,&amp;quot;SSL_write&amp;quot;); printf(&amp;quot;%s\n\n&amp;quot;, buffer); return orig_ssl_write(context, buffer, size); }  </description>
+    </item>
     
     <item>
       <title>Crackmes.de - The_thing by prout</title>
