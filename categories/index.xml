@@ -6,22 +6,21 @@
     <description>Recent content in Categories on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>memo</title>
+      <title>Memo</title>
       <link>https://masterccc.github.io/categories/memo/</link>
-      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/categories/memo/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>reverse</title>
+      <title>Reverse</title>
       <link>https://masterccc.github.io/categories/reverse/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -30,7 +29,7 @@
     </item>
     
     <item>
-      <title>writeup</title>
+      <title>Writeup</title>
       <link>https://masterccc.github.io/categories/writeup/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       

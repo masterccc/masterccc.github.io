@@ -6,49 +6,13 @@
     <description>Recent content in Tags on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>ELF</title>
-      <link>https://masterccc.github.io/tags/elf/</link>
-      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://masterccc.github.io/tags/elf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hook</title>
-      <link>https://masterccc.github.io/tags/hook/</link>
-      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://masterccc.github.io/tags/hook/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>instrumentation</title>
-      <link>https://masterccc.github.io/tags/instrumentation/</link>
-      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://masterccc.github.io/tags/instrumentation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://masterccc.github.io/tags/linux/</link>
-      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://masterccc.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>assembly</title>
+      <title>Assembly</title>
       <link>https://masterccc.github.io/tags/assembly/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -57,7 +21,7 @@
     </item>
     
     <item>
-      <title>challenge</title>
+      <title>Challenge</title>
       <link>https://masterccc.github.io/tags/challenge/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -66,7 +30,7 @@
     </item>
     
     <item>
-      <title>crackme</title>
+      <title>Crackme</title>
       <link>https://masterccc.github.io/tags/crackme/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       
@@ -75,11 +39,65 @@
     </item>
     
     <item>
-      <title>keygen</title>
+      <title>Elf</title>
+      <link>https://masterccc.github.io/tags/elf/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/elf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hook</title>
+      <link>https://masterccc.github.io/tags/hook/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/hook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Instrumentation</title>
+      <link>https://masterccc.github.io/tags/instrumentation/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/instrumentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Keygen</title>
       <link>https://masterccc.github.io/tags/keygen/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/keygen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://masterccc.github.io/tags/linux/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pictures</title>
+      <link>https://masterccc.github.io/tags/pictures/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/pictures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stegano</title>
+      <link>https://masterccc.github.io/tags/stegano/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/stegano/</guid>
       <description></description>
     </item>
     

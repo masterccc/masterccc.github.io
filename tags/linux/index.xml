@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on Master 0xCcC</title>
+    <title>Linux on Master 0xCcC</title>
     <link>https://masterccc.github.io/tags/linux/</link>
-    <description>Recent content in linux on Master 0xCcC</description>
+    <description>Recent content in Linux on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Stego tools (for pictures)</title>
+      <link>https://masterccc.github.io/memo/stego/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/memo/stego/</guid>
+      <description> Cheatsheet - Stego tools for pictures Stegoveritas Stegoveritas can be found here : https://github.com/bannsec/stegoVeritas
+Create several altered images (contrast/colors/brightness)
+Run with common options :
+$ stegoveritas -exif -meta -xmp -carve -imageTransform -BruteLSB -extractLSB -trailing massacre.png  Steghide Available in most of distro&amp;rsquo;s repos.
+Common run :
+steghide extract -sf file.jpg  Stegcracker Stegcracker can be found here : https://github.com/Paradoxis/StegCracker
+Performs a steghide bruteforce :
+stegcracker file.jpg /usr/share/wordlist/rockyou.txt  </description>
+    </item>
     
     <item>
       <title>LD_PRELOAD trick</title>
