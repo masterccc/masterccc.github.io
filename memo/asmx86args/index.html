@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>x86 Args and local vars</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://masterccc.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sh.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.54.0" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">x86 Args and local vars</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/reverse/">Reverse</a></li>
+                            
+                                <li><a href="/realist/">Realist</a></li>
+                            
+                                <li><a href="/memo/">Memo</a></li>
+                            
+                                <li><a href="/tools/">Tools</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/masterccc/"><i class="fa fa-github"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/memo/asmx86args/">x86 Args and local vars</a></h4>
+    <h5>August 7, 2019</h5>
+    
+    <a href="https://masterccc.github.io/tags/elf"><kbd class="item-tag">ELF</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/gdb"><kbd class="item-tag">gdb</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/assembly"><kbd class="item-tag">assembly</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/x86"><kbd class="item-tag">x86</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h1 id="cheatsheet-x86-args-and-local-vars">Cheatsheet - x86 Args and local vars</h1>
+
+<h2 id="source-code">Source code</h2>
+
+<pre><code>int func(char a, char b, char c, char d, char e){
+    char f = 6, g = 7, h =8 ;
+    printf(&quot;%d %d %d %d %d\n&quot;, a,b,c,d,e);
+    return 0xC0FEE ;
+}
+
+int main(void){
+    printf(&quot;%d&quot;,func(1,2,3,4,5));
+    return 0;
+}
+</code></pre>
+
+<h2 id="gdb-view">Gdb view</h2>
+
+<pre><code>
+(gdb) disass main
+   ...
+   0x00001238 &lt;+29&gt;:  push   0x5
+   0x0000123a &lt;+31&gt;:  push   0x4
+   0x0000123c &lt;+33&gt;:  push   0x3
+   0x0000123e &lt;+35&gt;:  push   0x2
+   0x00001240 &lt;+37&gt;:  push   0x1
+   0x00001242 &lt;+39&gt;:  call   0x1199 &lt;func&gt;
+   ...
+
+(gdb) disass func
+   0x56199 &lt;+0&gt;:      push   ebp
+   0x5619a &lt;+1&gt;:      mov    ebp,esp
+   0x5619c &lt;+3&gt;:      push   edi
+   0x5619d &lt;+4&gt;:      push   esi
+   0x5619e &lt;+5&gt;:      push   ebx
+   0x5619f &lt;+6&gt;:      sub    esp,0x3c
+   0x561a2 &lt;+9&gt;:      call   0x5655626c &lt;__x86.get_pc_thunk.ax&gt;
+   0x561a7 &lt;+14&gt;:     add    eax,0x2e59
+   &lt;-- Breakpoint --&gt;
+   0x561ac &lt;+19&gt;:     mov    edi,DWORD PTR [ebp+0x8]  ;fetch arg1
+   0x561af &lt;+22&gt;:     mov    esi,DWORD PTR [ebp+0xc]  ;fetch arg2
+   0x561b2 &lt;+25&gt;:     mov    ebx,DWORD PTR [ebp+0x10] ;fetch arg3
+   0x561b5 &lt;+28&gt;:     mov    ecx,DWORD PTR [ebp+0x14] ;fetch arg4
+   0x561b8 &lt;+31&gt;:     mov    edx,DWORD PTR [ebp+0x18] ;fetch arg5
+   0x561bb &lt;+34&gt;:     mov    DWORD PTR [ebp-0x40],edx
+   0x561be &lt;+37&gt;:     mov    edx,edi
+   0x561c0 &lt;+39&gt;:     mov    BYTE PTR [ebp-0x2c],dl
+   0x561c3 &lt;+42&gt;:     mov    edx,esi
+   0x561c5 &lt;+44&gt;:     mov    BYTE PTR [ebp-0x30],dl
+   0x561c8 &lt;+47&gt;:     mov    BYTE PTR [ebp-0x34],bl
+   0x561cb &lt;+50&gt;:     mov    BYTE PTR [ebp-0x38],cl
+   0x561ce &lt;+53&gt;:     movzx  edx,BYTE PTR [ebp-0x40]
+   0x561d2 &lt;+57&gt;:     mov    BYTE PTR [ebp-0x3c],dl
+   0x561d5 &lt;+60&gt;:     mov    BYTE PTR [ebp-0x19],0x6 ; loc_var1
+   0x561d9 &lt;+64&gt;:     mov    BYTE PTR [ebp-0x1a],0x7 ; loc_var2
+   0x561dd &lt;+68&gt;:     mov    BYTE PTR [ebp-0x1b],0x8 ; loc_var3
+   0x561e1 &lt;+72&gt;:     movsx  edi,BYTE PTR [ebp-0x3c]
+   0x561e5 &lt;+76&gt;:     movsx  esi,BYTE PTR [ebp-0x38]
+   0x561e9 &lt;+80&gt;:     movsx  ebx,BYTE PTR [ebp-0x34]
+   0x561ed &lt;+84&gt;:     movsx  ecx,BYTE PTR [ebp-0x30]
+   0x561f1 &lt;+88&gt;:     movsx  edx,BYTE PTR [ebp-0x2c]
+   0x561f5 &lt;+92&gt;:     sub    esp,0x8
+   0x561f8 &lt;+95&gt;:     push   edi
+   0x561f9 &lt;+96&gt;:     push   esi
+   0x561fa &lt;+97&gt;:     push   ebx
+   0x561fb &lt;+98&gt;:     push   ecx
+   0x561fc &lt;+99&gt;:     push   edx
+   0x561fd &lt;+100&gt;:    lea    edx,[eax-0x1ff8]
+   0x56203 &lt;+106&gt;:    push   edx
+   0x56204 &lt;+107&gt;:    mov    ebx,eax
+   0x56206 &lt;+109&gt;:    call   0x56556030 &lt;printf@plt&gt;
+   0x5620b &lt;+114&gt;:    add    esp,0x20
+   0x5620e &lt;+117&gt;:    mov    eax,0xc0fee
+   0x56213 &lt;+122&gt;:    lea    esp,[ebp-0xc]
+   0x56216 &lt;+125&gt;:    pop    ebx
+   0x56217 &lt;+126&gt;:    pop    esi
+   0x56218 &lt;+127&gt;:    pop    edi
+   0x56219 &lt;+128&gt;:    pop    ebp
+</code></pre>
+
+<h2 id="args-order">Args order</h2>
+
+<p>Params pushed in reverse order :</p>
+
+<pre><code>push c
+push b
+push a
+</code></pre>
+
+<p>Accessible in order :</p>
+
+<pre><code>rbp+8h  = a
+rbp+ch  = b
+rpb+10h = c
+</code></pre>
+
+<p>&ndash; Run until breakpoint &ndash;</p>
+
+<h1 id="stack-view">Stack view</h1>
+
+<p>Print 10 words from ebp :</p>
+
+<pre><code>(gdb) x/8x $ebp
+0xffffd4a8:   0xffffd4d8   0x56556247   0x00000001   0x00000002
+              ebp          ebp+4        ebp+8        ebp+0xc
+              ebp          saved eip    1st arg      2nd arg
+
+0xffffd4b8:   0x00000003   0x00000004   0x00000005   0xffffd584
+              ebp+0x10
+              arg
+</code></pre>
+
+<p>Retrieve esp from esp :</p>
+
+<pre><code>(gdb) x/80x $esp
+0xffffd460:      0x00000000      0x00c30000     0x00000005      0xf7ffc805
+0xffffd470:      0xffffd404      0x00000003     0xf7ffd002      0x00000001
+0xffffd480:    *:0x00000000    *:0xffffd584   *:0xf7fa4000    *:0x00000000
+0xffffd490:    *:0x00000000    *:0xf7fa4000   *:0xf7dfbcb9 sebp:0x56559000
+0xffffd4a0: sesi:0xf7fa4000 sedi:0xf7fa4000 ebp:0xffffd4d8  eip:0x56556247
+0xffffd4b0:  arg:0x00000001  arg:0x00000002 arg:0x00000003  arg:0x00000004
+0xffffd4c0:  arg:0x00000005      0xffffd584     0xffffd58c      0x5655622f
+0xffffd4d0:     0xffffd4f0       0x00000000     0x00000000      0xf7de4b41
+...
+</code></pre>
+
+<p>* = 0x5655619f &lt;+6&gt;: sub esp,0x3c allocates 7 slots (0x3c = 60 ; <sup>60</sup>&frasl;<sub>8</sub>=7)</p>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

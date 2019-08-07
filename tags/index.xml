@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Assembly</title>
       <link>https://masterccc.github.io/tags/assembly/</link>
-      <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/assembly/</guid>
       <description></description>
@@ -41,9 +41,18 @@
     <item>
       <title>Elf</title>
       <link>https://masterccc.github.io/tags/elf/</link>
-      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/elf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gdb</title>
+      <link>https://masterccc.github.io/tags/gdb/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/gdb/</guid>
       <description></description>
     </item>
     
@@ -77,7 +86,7 @@
     <item>
       <title>Linux</title>
       <link>https://masterccc.github.io/tags/linux/</link>
-      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/linux/</guid>
       <description></description>
@@ -98,6 +107,15 @@
       <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/stegano/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>X86</title>
+      <link>https://masterccc.github.io/tags/x86/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/x86/</guid>
       <description></description>
     </item>
     

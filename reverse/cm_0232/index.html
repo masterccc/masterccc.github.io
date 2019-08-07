@@ -183,7 +183,7 @@ Please tell me my password: testtest
 No! No! No! No! Try again.
 </code></pre>
 
-<p>Pretty classical, the program expect a password. This challenge is not hard to solve whithout debuging, but it&rsquo;s interesting to see what protections are applied and how to bypass them to make the analysis more comfortable.</p>
+<p>Pretty classical, the program expects a password. This challenge is not hard to solve whithout debuging, but it&rsquo;s interesting to see what protections are applied and how to bypass them to make the analysis more comfortable.</p>
 
 <p>This is the tree wich determines if the program is run with a debugger, we can find it by looking at where the &ldquo;anti-debug&rdquo; strings are used :</p>
 
@@ -250,7 +250,7 @@ No! No! No! No! Try again.
 <pre><code>OR(tab,tab) == tab
 </code></pre>
 
-<p>What could match an array better than itself ? What if the input is exactly the same tab ?</p>
+<p>What if the input is exactly the same tab ?</p>
 
 <pre><code>$ python2 -c 'print &quot;\xF7\xF8\xF1\xF4\xF1\xF8\xB3\xFC\xFC&quot;' | ./crackme.02.32 
 Please tell me my password: The password is correct!
@@ -278,7 +278,7 @@ The password is correct!
 Congratulations!!!
 </code></pre>
 
-<p>In fact, there are a lot of solution (512) because we can OR a lot of values to match the key.</p>
+<p>In fact, there are a lot of solutions (512) because we can OR a lot of values to match the key.</p>
 </div>
 
     
