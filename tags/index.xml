@@ -39,6 +39,15 @@
     </item>
     
     <item>
+      <title>Ctf</title>
+      <link>https://masterccc.github.io/tags/ctf/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Elf</title>
       <link>https://masterccc.github.io/tags/elf/</link>
       <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
@@ -86,7 +95,7 @@
     <item>
       <title>Linux</title>
       <link>https://masterccc.github.io/tags/linux/</link>
-      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/linux/</guid>
       <description></description>
@@ -98,6 +107,15 @@
       <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/pictures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Privesc</title>
+      <link>https://masterccc.github.io/tags/privesc/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/privesc/</guid>
       <description></description>
     </item>
     

