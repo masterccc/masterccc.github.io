@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Binary</title>
+      <link>https://masterccc.github.io/tags/binary/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/binary/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Challenge</title>
       <link>https://masterccc.github.io/tags/challenge/</link>
       <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
@@ -50,9 +59,18 @@
     <item>
       <title>Elf</title>
       <link>https://masterccc.github.io/tags/elf/</link>
-      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/elf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exploitation</title>
+      <link>https://masterccc.github.io/tags/exploitation/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/exploitation/</guid>
       <description></description>
     </item>
     
@@ -116,6 +134,15 @@
       <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/privesc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rop</title>
+      <link>https://masterccc.github.io/tags/rop/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/rop/</guid>
       <description></description>
     </item>
     

