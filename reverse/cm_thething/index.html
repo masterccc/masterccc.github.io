@@ -59,7 +59,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.54.0" />
+ <meta name="generator" content="Hugo 0.57.2" />
         
 
         
@@ -234,56 +234,64 @@ int strcmp(const char *s1, const char *s2){
 <p>note :</p>
 
 <ul>
-<li><code>-fpic</code> for position independant code)</li>
-<li><code>-shared</code> for shared library</li>
-<li><code>-m32</code> to force x86 because my computer is x86_64 and the binary is x86</li>
+<li><pre><code class="language--fpic```">* ```-shared``` for shared library
+* ```-m32``` to force x86 because my computer is x86_64 and the binary is x86
+
+Try it :
+
+</code></pre></li>
 </ul>
 
-<p>Try it :</p>
-
-<pre><code>$ LD_PRELOAD=$PWD/strcmp.so ./thething 
+<p>$ LD_PRELOAD=$PWD/strcmp.so ./thething
 Name: Toto
 Serial: EZRE
-cmp : &lt;'-160141484'&gt; &lt;EZRE&gt;Well done :-)
+cmp : &lt;&lsquo;-160141484&rsquo;&gt; <EZRE>Well done :-)</p>
+
+<pre><code>The hook worked, we can see that the serial we entered is compared with a number (the expected serial). Let's try it without LD_PRELOAD :
+
 </code></pre>
 
-<p>The hook worked, we can see that the serial we entered is compared with a number (the expected serial). Let&rsquo;s try it without LD_PRELOAD :</p>
-
-<pre><code>$ ./thething 
+<p>$ ./thething
 Name: Toto
 Serial: -160141484
-Well done :-)
+Well done :-)</p>
+
+<pre><code>
+No need to disassemble here, but by doing so we can notice in IDA that the serial is the string representation of an integer (```%d```). This string is then compared to our input with ```strcmp```.
+
+![GitHub Logo](/img/thething_asm.png)
+
+
+Ok it works, next step, create a keygen for arbitraries names.
+
+
+# Keygen
+
+I choosed the lazy way :) the .so file can be used as a keygen.
+
 </code></pre>
 
-<p>No need to disassemble here, but by doing so we can notice in IDA that the serial is the string representation of an integer (<code>%d</code>). This string is then compared to our input with <code>strcmp</code>.</p>
-
-<p><img src="/img/thething_asm.png" alt="GitHub Logo" /></p>
-
-<p>Ok it works, next step, create a keygen for arbitraries names.</p>
-
-<h1 id="keygen">Keygen</h1>
-
-<p>I choosed the lazy way :) the .so file can be used as a keygen.</p>
-
-<pre><code>#include &lt;stdio.h&gt;
+<p>#include <stdio.h>
 int strcmp(const char *s1, const char *s2){
-	printf(&quot;Serial found : &lt;%s&gt;&quot;, s1);
+	printf(&ldquo;Serial found : &lt;%s&gt;&ldquo;, s1);
 	return 0;
-}
+}</p>
+
+<pre><code>
+and so ...
+
 </code></pre>
 
-<p>and so &hellip;</p>
-
-<pre><code>LD_PRELOAD=$PWD/strcmp.so ./thething 
+<p>LD_PRELOAD=$PWD/strcmp.so ./thething
 Name: AAAA
 Serial: 339820865
-Serial found : &lt;339820865&gt;Well done :-)
+Serial found : <339820865>Well done :-)</p>
 
-./thething 
+<p>./thething
 Name: AAAA
 Serial: 339820865
 Well done :-)
-</code></pre>
+```</p>
 
 <p>You can use it with some grep sorcery if you want a sexier output.</p>
 </div>
