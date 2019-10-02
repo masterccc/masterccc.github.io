@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shellcode on Master 0xCcC</title>
+    <link>https://masterccc.github.io/tags/shellcode/</link>
+    <description>Recent content in shellcode on Master 0xCcC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://masterccc.github.io/tags/shellcode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Write your shellcode</title>
+      <link>https://masterccc.github.io/memo/shellcode/</link>
+      <pubDate>Wed, 02 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/memo/shellcode/</guid>
+      <description>This memo explains the required steps to write you own shellcode. From C code (or assembly directly) to the shellcode&#39;s string. At the bottom of this page a code is present to test your shellcode.
+x86_64 Shellcode Let&#39;s take the following C code :
+#include &amp;lt;unistd.h&amp;gt; int main(void){ execve(&amp;quot;/bin/sh&amp;quot;, NULL, NULL); }  NULL parameters stands for args and environment, we don&#39;t need them for now.
+It can be translated in assembly this way :</description>
+    </item>
+    
+  </channel>
+</rss>
