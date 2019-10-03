@@ -78,6 +78,13 @@ a:hover {
     background-color: var(--accent);
 }
 
+.itemtitle {
+    font-size: 1.3em;
+}
+
+.itemdate {
+    color:black;
+}
 /*navigation bar icons*/
 
 .navbar-icon {

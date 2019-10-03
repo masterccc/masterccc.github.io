@@ -9,13 +9,13 @@
         <style>
 
     html body {
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Oxygen', sans-serif;
         background-color: white;
     }
 
     :root {
         --accent: red;
-        --border-width:  5px ;
+        --border-width:  0 ;
     }
 
 </style>
@@ -27,7 +27,7 @@
 
 
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
 
 
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"> 
@@ -134,8 +134,12 @@
     
     
 
-    <h4><a href="/memo/shellcode/">Write your shellcode</a></h4>
-    <h5>October 2, 2019</h5>
+    <div>
+        <a class="itemtitle" href="/memo/shellcode/">Write your shellcode</a>
+        <span class="itemdate">October 2, 2019</span>
+    </div>
+
+
     
     <a href="https://masterccc.github.io/tags/shellcode"><kbd class="item-tag">shellcode</kbd></a>
     
@@ -155,7 +159,7 @@
 
 <h1 id="x8664-shellcode">x86_64 Shellcode</h1>
 
-<p>Let's take the following C code :</p>
+<p>In this memo, the shellcode will launch /bin/sh. Let's take the following C code :</p>
 
 <pre><code>#include &lt;unistd.h&gt;
 
@@ -320,11 +324,15 @@ $ readelf -a shelltest | grep STACK -A 1
 
 <h1 id="polymorphism">Polymorphism</h1>
 
+<p><em>In computer terminology, polymorphic code is code that uses a polymorphic engine to mutate while keeping the original algorithm intact. That is, the code changes itself each time it runs, but the function of the code (its semantics) will not change at all. For example, 1+3 and 6-2 both achieve the same result while using different values and operations. This technique is sometimes used by computer viruses, shellcodes and computer worms to hide their presence.</em></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Polymorphic_code">https://en.wikipedia.org/wiki/Polymorphic_code</a></p>
+
 <h2 id="the-problem">The problem</h2>
 
 <p>In some cases, we can't use <code>\x00</code> in shellcode because they are processed by strings's functions (like strcpy which stops reading at the first <code>\x00</code> encountered). Sometime somes bytes are forbidden in CTF exercises. We need to remove them.</p>
 
-<p>In order to remove them, we have to manipulate the assembly code, change opcode with others, remove some, add some, here is an example.</p>
+<p>In order to remove them, we have to manipulate the assembly code, change opcodes with others, remove some, add some, here is an example.</p>
 
 <h2 id="example">Example</h2>
 
@@ -395,7 +403,7 @@ rax            0xff978cd091969dd1  -29400045130965551
 
 <p><code>48 31 d2 48 31 f6 48 b8 d1 9d 96 91 d0 8c 97 ff 48 f7 d8 50 48 89 e7 48 31 c0 48 83 c0 3b 0f 05</code></p>
 
-<p>It's done, no more zeros ! You can use similar methods to remove all unwanted bytes. At this point, better is you assembly knowledge easier and faster you'll create your shellcodes.</p>
+<p>It's done, no more zeros ! You can use similar methods (and create you own) to remove all unwanted bytes. At this point, better is you assembly knowledge easier and faster you'll create your shellcodes.</p>
 
 <p>Here's the python-usable version :</p>
 
