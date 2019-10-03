@@ -6,10 +6,20 @@
     <description>Recent content in Tools on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jul 2019 15:41:06 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Oct 2019 15:41:06 +0200</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/tools/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>/bin/cat Shellcode generator</title>
+      <link>https://masterccc.github.io/tools/shellcode_gen/</link>
+      <pubDate>Thu, 03 Oct 2019 15:41:06 +0200</pubDate>
+      
+      <guid>https://masterccc.github.io/tools/shellcode_gen/</guid>
+      <description>/bin/cat [your_file] Shellcode generator for intel x86 File name to read : Generate This is your shellcode : \x31\xc0\x50\x68\x2f\x63\x61\x74\x68\x2f\x62\x69\x6e\x89\xe3\x50\x68\x2e\x74\x78\x74\x68\x66\x6c\x61\x67\x89\xe1\x50\x51\x53\x89\xe1\x31\xc0\x83\xc0\x0b\xcd\x80    bits 32 global main SECTION .text main: xor eax,eax push eax ; env
+push 0x7461632f ;&#34;tac/&#34; push 0x6e69622f ;&#34;inb/&#34; mov ebx,esp push eax  push 0x7478742e push 0x67616c66   mov ecx,esp push eax push ecx push ebx mov ecx,esp xor eax,eax add eax,0xb int 0x80   var begin = &#34;</description>
+    </item>
     
     <item>
       <title>Bin/asci/hex/b64 converter</title>
