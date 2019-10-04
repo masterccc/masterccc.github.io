@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149344965-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149344965-1');
+</script>
+
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-site-verification" content="x8Iv_Db6KOOx4mL-b2Ink56M14U_RsqmDiyYHZU8nR8" />
+        <title>Python subprocess communication</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Oxygen', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  0 ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://masterccc.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sh.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Python subprocess communication</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/reverse/">Reverse</a></li>
+                            
+                                <li><a href="/realist/">Realist</a></li>
+                            
+                                <li><a href="/memo/">Memo</a></li>
+                            
+                                <li><a href="/tools/">Tools</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/masterccc/"><i class="fa fa-github"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <div>
+        <a class="itemtitle" href="/memo/process_com/">Python subprocess communication</a>
+        <span class="itemdate">October 4, 2019</span>
+    </div>
+
+
+    
+    <a href="https://masterccc.github.io/tags/python"><kbd class="item-tag">python</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/process"><kbd class="item-tag">process</kbd></a>
+    
+    <a href="https://masterccc.github.io/tags/signal"><kbd class="item-tag">signal</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><h1 id="cheatsheet--python-subprocess-communication">Cheatsheet - Python subprocess communication</h1>
+
+<h3 id="imports">Imports</h3>
+
+<pre><code>from subprocess import Popen, PIPE
+</code></pre>
+
+<h3 id="imports-for-signals">Imports for signals</h3>
+
+<pre><code>import signal, os
+</code></pre>
+
+<h3 id="start-process">Start process</h3>
+
+<pre><code>process = Popen(['./sum 50'], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+</code></pre>
+
+<h3 id="check-if-process-is-alive">Check if process is alive</h3>
+
+<pre><code>def isAlive(process):
+	poll = process.poll()
+	if poll == None:
+		print(&quot;Program running...&quot;)
+	else:
+		print(&quot;Program stopped :(&quot;)
+</code></pre>
+
+<h3 id="read-from-stdout">Read from stdout</h3>
+
+<pre><code>def getline(process):
+	return &quot;stdout : &quot; + process.stdout.readline().decode('utf-8')
+</code></pre>
+
+<h3 id="write-to-stdin">Write to stdin</h3>
+
+<pre><code>process.stdin.write((str(i)+&quot;\n&quot;).encode())
+process.stdin.flush()
+</code></pre>
+
+<h3 id="send-signals">Send signals</h3>
+
+<pre><code>os.kill(process.pid, signal.SIGSTOP)
+</code></pre>
+
+<p>Available signals :</p>
+
+<table class="pure-table table table-responsive table-striped">
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>SIGHUP</td>
+<td>Exit Hangup</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>SIGINT</td>
+<td>Exit Interrupt</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>SIGQUIT</td>
+<td>Core Quit</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>SIGILL</td>
+<td>Illegal Instruction</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>SIGTRAP</td>
+<td>Trace/Breakpoint Trap</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>SIGABRT</td>
+<td>Core Abort</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>SIGEMT</td>
+<td>Emulation Trap</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>SIGFPE</td>
+<td>Arithmetic Exception</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>SIGKILL</td>
+<td>Exit Killed</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>SIGBUS</td>
+<td>Bus Error</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>SIGSEGV</td>
+<td>Segmentation Fault</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>SIGSYS</td>
+<td>Bad System Call</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>SIGPIPE</td>
+<td>Broken Pipe</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>SIGALRM</td>
+<td>Alarm Clock</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>SIGTERM</td>
+<td>Exit Terminated</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>SIGUSR1</td>
+<td>User Signal 1</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>SIGUSR2</td>
+<td>User Signal 2</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>SIGCHLD</td>
+<td>Child Status</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>SIGPWR</td>
+<td>Power Fail/Restart</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>SIGWINCH</td>
+<td>Window Size Change</td>
+</tr>
+
+<tr>
+<td>21</td>
+<td>SIGURG</td>
+<td>Urgent Socket Condition</td>
+</tr>
+
+<tr>
+<td>22</td>
+<td>SIGPOLL</td>
+<td>Socket I/O Possible</td>
+</tr>
+
+<tr>
+<td>23</td>
+<td>SIGSTOP</td>
+<td>Stopped (signal)</td>
+</tr>
+
+<tr>
+<td>24</td>
+<td>SIGTSTP</td>
+<td>Stopped (user)</td>
+</tr>
+
+<tr>
+<td>25</td>
+<td>SIGCONT</td>
+<td>Ignore Continued</td>
+</tr>
+
+<tr>
+<td>26</td>
+<td>SIGTTIN</td>
+<td>Stopped (tty input)</td>
+</tr>
+
+<tr>
+<td>27</td>
+<td>SIGTTOU</td>
+<td>Stopped (tty output)</td>
+</tr>
+
+<tr>
+<td>28</td>
+<td>SIGVTALRM</td>
+<td>Virtual Timer Expired</td>
+</tr>
+
+<tr>
+<td>29</td>
+<td>SIGPROF</td>
+<td>Profiling Timer Expired</td>
+</tr>
+
+<tr>
+<td>30</td>
+<td>SIGXCPU</td>
+<td>CPU time limit exceeded</td>
+</tr>
+
+<tr>
+<td>31</td>
+<td>SIGXFSZ</td>
+<td>File size limit exceeded</td>
+</tr>
+
+<tr>
+<td>32</td>
+<td>SIGWAITING</td>
+<td>All LWPs blocked</td>
+</tr>
+
+<tr>
+<td>33</td>
+<td>SIGLWP</td>
+<td>Virtual Interprocessor Interrupt for Threads Library</td>
+</tr>
+
+<tr>
+<td>34</td>
+<td>SIGAIO</td>
+<td>Asynchronous I/O</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="full-code-example">Full code example</h1>
+
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char **argv){
+	
+	int sum, tmp, i;
+
+	sum = atoi(argv[1]);
+	printf(&quot;initial sum :%d\n&quot;, sum);
+
+	for(i=0;i&lt;5;i++){
+		printf(&quot;Nb :\n&quot;);
+		fflush(stdout);
+		scanf(&quot;%d&quot;,&amp;tmp);
+		sum += tmp ;
+	}
+
+	printf(&quot;\nSum : %d&quot;, sum);
+	return 0 ;
+}
+</code></pre>
+
+<pre><code>#!/usr/bin/env python3
+from subprocess import Popen, PIPE
+import signal, os
+
+def isAlive(process):
+	poll = process.poll()
+	if poll == None:
+		print(&quot;Program running...&quot;)
+	else:
+		print(&quot;Program stopped :(&quot;)
+
+def getline(process):
+	return &quot;stdout : &quot; + process.stdout.readline().decode('utf-8')
+
+
+process = Popen(['./sum 50'], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+
+print(getline(process))
+
+for i in range(1,6):
+	print(getline(process))
+	print(&quot;write &quot; + str(i))
+	process.stdin.write((str(i)+&quot;\n&quot;).encode())
+	process.stdin.flush()
+
+	
+print(getline(process))
+print(getline(process))
+		
+
+#Stop/resume process
+# os.kill(process.pid, signal.SIGSTOP)
+#os.kill(process.pid, signal.SIGCONT)
+
+
+</code></pre>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

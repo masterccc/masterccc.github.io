@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>linux</title>
+      <link>https://masterccc.github.io/tags/linux/</link>
+      <pubDate>Fri, 04 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>process</title>
+      <link>https://masterccc.github.io/tags/process/</link>
+      <pubDate>Fri, 04 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/process/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://masterccc.github.io/tags/python/</link>
+      <pubDate>Fri, 04 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>signal</title>
+      <link>https://masterccc.github.io/tags/signal/</link>
+      <pubDate>Fri, 04 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/tags/signal/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>assembly</title>
@@ -26,15 +62,6 @@
       <pubDate>Wed, 02 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/tags/exploit/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://masterccc.github.io/tags/linux/</link>
-      <pubDate>Wed, 02 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://masterccc.github.io/tags/linux/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,19 @@
     <description>Recent content in memo on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/categories/memo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python subprocess communication</title>
+      <link>https://masterccc.github.io/memo/process_com/</link>
+      <pubDate>Fri, 04 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/memo/process_com/</guid>
+      <description>Cheatsheet - Python subprocess communication Imports from subprocess import Popen, PIPE  Imports for signals import signal, os  Start process process = Popen([&#39;./sum 50&#39;], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE)  Check if process is alive def isAlive(process): poll = process.poll() if poll == None: print(&amp;quot;Program running...&amp;quot;) else: print(&amp;quot;Program stopped :(&amp;quot;)  Read from stdout def getline(process): return &amp;quot;stdout : &amp;quot; + process.stdout.readline().decode(&#39;utf-8&#39;)  Write to stdin process.stdin.write((str(i)+&amp;quot;\n&amp;quot;).encode()) process.stdin.flush()  Send signals os.</description>
+    </item>
     
     <item>
       <title>Write your shellcode</title>
