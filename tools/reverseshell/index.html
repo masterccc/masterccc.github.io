@@ -190,10 +190,10 @@
 <h2>Reverse shell auto-complete</h2>
 <br>
 
-Auditor IP : <input id="txt_ip" type="text" name="ip" value="192.168.0.50"/>
-Auditor Port : <input id="txt_port" type="text" name="port" value="5555"/>
+Auditor IP : <input onkeyup="changeEvent();" id="txt_ip" type="text" name="ip" value="192.168.0.50"/>
+Auditor Port : <input onkeyup="changeEvent();" id="txt_port" type="text" name="port" value="5555"/>
 
-<button id="btn_generate"/>Generate</button>
+<button onclick="changeEvent();" id="btn_generate"/>Generate</button>
 <br><br>
 
 <h3>Bash</h3>
@@ -337,8 +337,8 @@ lua: os.execute('/bin/sh')
 
 <script>
  
-   document.getElementById("btn_generate").onclick = function(){
-   
+   var changeEvent = function(){
+   console.log("event");
       var ip = document.getElementById("txt_ip").value ;
       var port = document.getElementById("txt_port").value ;
       
@@ -349,8 +349,10 @@ lua: os.execute('/bin/sh')
       for(i=0;i<ports.length;i++) ports[i].innerHTML=port;
 
    };
+   document.getElementById("txt_ip").onkeyup = changeEvent ;
+   document.getElementById("txt_port").onkeyup = changeEvent ;
 
-   document.getElementById("btn_generate").click();
+   changeEvent();
 
 jQuery( document).ready(function($){
    var copyid = 0;
