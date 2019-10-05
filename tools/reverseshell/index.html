@@ -384,7 +384,7 @@ jQuery( document).ready(function($){
          
          // We don't need padding, reducing the size if it does flash render.
          textArea.style.padding = 0;
-
+undefined
          // Clean up any borders.
          textArea.style.border = 'none';
          textArea.style.outline = 'none';
@@ -394,7 +394,9 @@ jQuery( document).ready(function($){
          textArea.style.background = 'transparent';
 
          //Set value to text to be copied
-         textArea.value = $pre.html();
+         textArea.value = $pre[0].innerText ;
+        // console.log($pre[0].innerText);
+         //console.log($pre.html());
 
          document.body.appendChild(textArea);
          textArea.select();
