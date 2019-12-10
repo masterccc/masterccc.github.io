@@ -182,7 +182,8 @@ package:/data/app/com.name.yourapp-K1Ep_ZmFrZWRhdGE6KQ==/base.apk
 <pre><code>$apktool b base/
 </code></pre><p>Create a keystore (do it just once):</p>
 <pre><code>$keytool -genkey -v -keystore debug.keystore -alias android -keyalg RSA -keysize 2048 -validity 20000
-</code></pre><p>Sign the apk :</p>
+</code></pre><p>Go to the base/dist folder.</p>
+<p>Sign the apk :</p>
 <pre><code>$jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ../../debug.keystore base.apk android
 </code></pre><p>Align the zip :</p>
 <pre><code>$/opt/android-sdk/build-tools/29.0.2/zipalign -v 4 base.apk base_aligned.apk
