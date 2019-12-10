@@ -70,7 +70,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
+ <meta name="generator" content="Hugo 0.60.1" />
         
 
         
@@ -168,23 +168,14 @@
 </div>
 
 
-    <br> <div class="text-justify">
-
-<p>This is a crackme level 2 (Easy) from <a href="https://crackmes.one/crackme/5ab77f5433c5d40ad448c1d6">https://crackmes.one/crackme/5ab77f5433c5d40ad448c1d6</a>
+    <br> <div class="text-justify"><p>This is a crackme level 2 (Easy) from <a href="https://crackmes.one/crackme/5ab77f5433c5d40ad448c1d6">https://crackmes.one/crackme/5ab77f5433c5d40ad448c1d6</a>
 )</p>
-
 <h1 id="fast-static-analysis">Fast static analysis</h1>
-
-<p>First, let&rsquo;s see what kind of file is it with <code>file</code> command :</p>
-
+<p>First, let's see what kind of file is it with <code>file</code> command :</p>
 <pre><code>$ file thething
 thething: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), for GNU/Linux 2.4.1, dynamically linked, interpreter /lib/ld-linux.so.2, no section header
-</code></pre>
-
-<p>Ok, so 32 bits ELF and dynamically linked (this detail will be useful later). Not sure if stripped or not because of the &ldquo;no section header&rdquo;.</p>
-
+</code></pre><p>Ok, so 32 bits ELF and dynamically linked (this detail will be useful later). Not sure if stripped or not because of the &ldquo;no section header&rdquo;.</p>
 <p>Lets see what the <code>strings</code> command tells us :</p>
-
 <pre><code>$ strings thething
 read
 ptrace
@@ -202,113 +193,66 @@ __data_start
 _Jv_RegisterClasses
 read@@GLIBC_2.0
 __gmon_start__
-</code></pre>
-
-<p>A lot of symbols and function names, so it doesn&rsquo;t seem to be stripped, good news. And also a lot of strings.</p>
-
+</code></pre><p>A lot of symbols and function names, so it doesn't seem to be stripped, good news. And also a lot of strings.</p>
 <h1 id="dynamic-analysis-and-cracking-part">Dynamic analysis and cracking part</h1>
-
 <p>Lets run the program :</p>
-
 <pre><code>$ ./thething 
 Name: toto
 Serial: ze32r1ze312r
 Error ! I can't process this name/serial
-</code></pre>
-
-<p>Depending on the input, we can trigger an other error :</p>
-
+</code></pre><p>Depending on the input, we can trigger an other error :</p>
 <pre><code>&quot;In fact, your serial have to be equal or bigger than 4 letters&quot;
-</code></pre>
-
-<p>We know that the string is at least 4 chars long. Lets continue digging with <code>ltrace</code> to see what the <code>sprintf</code> or <code>strcmp</code> are doing :</p>
-
+</code></pre><p>We know that the string is at least 4 chars long. Lets continue digging with <code>ltrace</code> to see what the <code>sprintf</code> or <code>strcmp</code> are doing :</p>
 <pre><code>$ ltrace ./thething
 Couldn't find .dynsym or .dynstr in &quot;/proc/6541/exe&quot;
-</code></pre>
-
-<p>Not working, surely because of the &ldquo;no section header&rdquo;. Instead, I try to use the LD_PRELOAD trick with strcmp. I choosed strcmp because it&rsquo;s often use to compare actual user input with expected input.</p>
-
+</code></pre><p>Not working, surely because of the &ldquo;no section header&rdquo;. Instead, I try to use the LD_PRELOAD trick with strcmp. I choosed strcmp because it's often use to compare actual user input with expected input.</p>
 <p>Prepare the file for the hook:</p>
-
 <pre><code>#include &lt;stdio.h&gt;
 
 int strcmp(const char *s1, const char *s2){
 	printf(&quot;cmp : &lt;%s&gt; &lt;%s&gt;&quot;, s1, s2);
 	return 0;
 }
-</code></pre>
-
-<p>(Always return 0, so strings will always match)</p>
-
+</code></pre><p>(Always return 0, so strings will always match)</p>
 <p>Compile to create the .so lib :</p>
-
 <pre><code>gcc -o strcmp.so -fPIC -shared strcmp.c -m32
-</code></pre>
-
-<p>note :</p>
-
+</code></pre><p>note :</p>
 <ul>
-<li><pre><code class="language--fpic```">* ```-shared``` for shared library
-* ```-m32``` to force x86 because my computer is x86_64 and the binary is x86
-
-Try it :
-
-</code></pre></li>
+<li><code>-fpic</code> for position independant code)</li>
+<li><code>-shared</code> for shared library</li>
+<li><code>-m32</code> to force x86 because my computer is x86_64 and the binary is x86</li>
 </ul>
-
-<p>$ LD_PRELOAD=$PWD/strcmp.so ./thething
+<p>Try it :</p>
+<pre><code>$ LD_PRELOAD=$PWD/strcmp.so ./thething 
 Name: Toto
 Serial: EZRE
-cmp : &lt;&lsquo;-160141484&rsquo;&gt; <EZRE>Well done :-)</p>
-
-<pre><code>The hook worked, we can see that the serial we entered is compared with a number (the expected serial). Let's try it without LD_PRELOAD :
-
-</code></pre>
-
-<p>$ ./thething
+cmp : &lt;'-160141484'&gt; &lt;EZRE&gt;Well done :-)
+</code></pre><p>The hook worked, we can see that the serial we entered is compared with a number (the expected serial). Let's try it without LD_PRELOAD :</p>
+<pre><code>$ ./thething 
 Name: Toto
 Serial: -160141484
-Well done :-)</p>
-
-<pre><code>
-No need to disassemble here, but by doing so we can notice in IDA that the serial is the string representation of an integer (```%d```). This string is then compared to our input with ```strcmp```.
-
-![GitHub Logo](/img/thething_asm.png)
-
-
-Ok it works, next step, create a keygen for arbitraries names.
-
-
-# Keygen
-
-I choosed the lazy way :) the .so file can be used as a keygen.
-
-</code></pre>
-
-<p>#include <stdio.h>
+Well done :-)
+</code></pre><p>No need to disassemble here, but by doing so we can notice in IDA that the serial is the string representation of an integer (<code>%d</code>). This string is then compared to our input with <code>strcmp</code>.</p>
+<p><img src="/img/thething_asm.png" alt="GitHub Logo"></p>
+<p>Ok it works, next step, create a keygen for arbitraries names.</p>
+<h1 id="keygen">Keygen</h1>
+<p>I choosed the lazy way :) the .so file can be used as a keygen.</p>
+<pre><code>#include &lt;stdio.h&gt;
 int strcmp(const char *s1, const char *s2){
-	printf(&ldquo;Serial found : &lt;%s&gt;&ldquo;, s1);
+	printf(&quot;Serial found : &lt;%s&gt;&quot;, s1);
 	return 0;
-}</p>
-
-<pre><code>
-and so ...
-
-</code></pre>
-
-<p>LD_PRELOAD=$PWD/strcmp.so ./thething
+}
+</code></pre><p>and so &hellip;</p>
+<pre><code>LD_PRELOAD=$PWD/strcmp.so ./thething 
 Name: AAAA
 Serial: 339820865
-Serial found : <339820865>Well done :-)</p>
+Serial found : &lt;339820865&gt;Well done :-)
 
-<p>./thething
+./thething 
 Name: AAAA
 Serial: 339820865
 Well done :-)
-```</p>
-
-<p>You can use it with some grep sorcery if you want a sexier output.</p>
+</code></pre><p>You can use it with some grep sorcery if you want a sexier output.</p>
 </div>
 
     
@@ -322,7 +266,7 @@ Well done :-)
 
         <footer>
 
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
 
         </footer>
        

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>android on Master 0xCcC</title>
+    <link>https://masterccc.github.io/tags/android/</link>
+    <description>Recent content in android on Master 0xCcC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://masterccc.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Apk - Edit and rebuild</title>
+      <link>https://masterccc.github.io/memo/edit_apk/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/memo/edit_apk/</guid>
+      <description>Cheatsheet - Apk rebuild for debug purpose This tutorial describes the different steps to edit and rebuild an apk from the apk file.
+Prerequisites This manipulation require to enable USB debugging in your android device (https://developer.android.com/studio/debug/dev-options) and have adb, apktool, jarsigner, keytool and zipalign installed on your computer. A rooted device is NOT needed.
+Get the apk from adb : First, get the path to the apk in your filesystem :</description>
+    </item>
+    
+  </channel>
+</rss>

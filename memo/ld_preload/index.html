@@ -70,7 +70,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
+ <meta name="generator" content="Hugo 0.60.1" />
         
 
         
@@ -164,24 +164,13 @@
 </div>
 
 
-    <br> <div class="text-justify">
-
-<h1 id="cheatsheet-ld-preload-trick">Cheatsheet - LD_PRELOAD trick</h1>
-
+    <br> <div class="text-justify"><h1 id="cheatsheet--ldpreload-trick">Cheatsheet - LD_PRELOAD trick</h1>
 <p>## Compilation</p>
-
 <pre><code>gcc -o hook.so dlsym.c -ldl -fPIC -shared
-</code></pre>
-
-<h2 id="usage">Usage :</h2>
-
+</code></pre><h2 id="usage-">Usage :</h2>
 <pre><code>LD_PRELOAD=$PWD/hook.so ./target
-</code></pre>
-
-<h2 id="examples">Examples</h2>
-
-<h3 id="strcmp-hook">Strcmp hook :</h3>
-
+</code></pre><h2 id="examples">Examples</h2>
+<h3 id="strcmp-hook-">Strcmp hook :</h3>
 <pre><code>#define _GNU_SOURCE
 
 #include &lt;stdio.h&gt;
@@ -196,10 +185,7 @@ int strcmp(const char *s1, const char *s2){
 
 	return true_strcmp(s1,s2);
 }
-</code></pre>
-
-<h3 id="ssl-inspector">SSL inspector :</h3>
-
+</code></pre><h3 id="ssl-inspector-">SSL inspector :</h3>
 <pre><code>#define _GNU_SOURCE
 
 #include &lt;stdio.h&gt;
@@ -216,8 +202,7 @@ int SSL_write(SSL *context, const void *buffer, int size){
 	
 	return orig_ssl_write(context, buffer, size);
 }
-</code></pre>
-</div>
+</code></pre></div>
 
     
     
@@ -230,7 +215,7 @@ int SSL_write(SSL *context, const void *buffer, int size){
 
         <footer>
 
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
 
         </footer>
        

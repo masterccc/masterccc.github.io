@@ -70,7 +70,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
+ <meta name="generator" content="Hugo 0.60.1" />
         
 
         
@@ -167,47 +167,26 @@
     <br> <div class="text-justify"><h1 id="cheatsheet--python-subprocess-communication">Cheatsheet - Python subprocess communication</h1>
 
 <h3 id="imports">Imports</h3>
-
-<pre><code>from subprocess import Popen, PIPE
-</code></pre>
-
+<pre><code>from subprocess import Popen, PIPE</code></pre>
 <h3 id="imports-for-signals">Imports for signals</h3>
-
-<pre><code>import signal, os
-</code></pre>
-
+<pre><code>import signal, os</code></pre>
 <h3 id="start-process">Start process</h3>
-
-<pre><code>process = Popen(['./sum 50'], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE)
-</code></pre>
-
+<pre><code>process = Popen(['./sum 50'], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE)</code></pre>
 <h3 id="check-if-process-is-alive">Check if process is alive</h3>
-
 <pre><code>def isAlive(process):
 	poll = process.poll()
 	if poll == None:
-		print(&quot;Program running...&quot;)
+		print("Program running...")
 	else:
-		print(&quot;Program stopped :(&quot;)
-</code></pre>
-
+		print("Program stopped :(")</code></pre>
 <h3 id="read-from-stdout">Read from stdout</h3>
-
 <pre><code>def getline(process):
-	return &quot;stdout : &quot; + process.stdout.readline().decode('utf-8')
-</code></pre>
-
+	return "stdout : " + process.stdout.readline().decode('utf-8')</code></pre>
 <h3 id="write-to-stdin">Write to stdin</h3>
-
-<pre><code>process.stdin.write((str(i)+&quot;\n&quot;).encode())
-process.stdin.flush()
-</code></pre>
-
+<pre><code>process.stdin.write((str(i)+"\n").encode())
+process.stdin.flush()</code></pre>
 <h3 id="send-signals">Send signals</h3>
-
-<pre><code>os.kill(process.pid, signal.SIGSTOP)
-</code></pre>
-
+<pre><code>os.kill(process.pid, signal.SIGSTOP)</code></pre>
 <p>Available signals :</p>
 
 <table class="pure-table table table-responsive table-striped">
@@ -427,42 +406,38 @@ process.stdin.flush()
 </table>
 
 <h1 id="full-code-example">Full code example</h1>
-
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+<pre><code>#include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char **argv){
 	
 	int sum, tmp, i;
 
 	sum = atoi(argv[1]);
-	printf(&quot;initial sum :%d\n&quot;, sum);
+	printf("initial sum :%d\n", sum);
 
-	for(i=0;i&lt;5;i++){
-		printf(&quot;Nb :\n&quot;);
+	for(i=0;i<5;i++){
+		printf("Nb :\n");
 		fflush(stdout);
-		scanf(&quot;%d&quot;,&amp;tmp);
+		scanf("%d",&tmp);
 		sum += tmp ;
 	}
 
-	printf(&quot;\nSum : %d&quot;, sum);
+	printf("\nSum : %d", sum);
 	return 0 ;
-}
-</code></pre>
-
-<pre><code>#!/usr/bin/env python3
+}</code></pre><pre><code>#!/usr/bin/env python3
 from subprocess import Popen, PIPE
 import signal, os
 
 def isAlive(process):
 	poll = process.poll()
 	if poll == None:
-		print(&quot;Program running...&quot;)
+		print("Program running...")
 	else:
-		print(&quot;Program stopped :(&quot;)
+		print("Program stopped :(")
 
 def getline(process):
-	return &quot;stdout : &quot; + process.stdout.readline().decode('utf-8')
+	return "stdout : " + process.stdout.readline().decode('utf-8')
 
 
 process = Popen(['./sum 50'], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE)
@@ -471,8 +446,8 @@ print(getline(process))
 
 for i in range(1,6):
 	print(getline(process))
-	print(&quot;write &quot; + str(i))
-	process.stdin.write((str(i)+&quot;\n&quot;).encode())
+	print("write " + str(i))
+	process.stdin.write((str(i)+"\n").encode())
 	process.stdin.flush()
 
 	
@@ -482,11 +457,7 @@ print(getline(process))
 
 #Stop/resume process
 # os.kill(process.pid, signal.SIGSTOP)
-#os.kill(process.pid, signal.SIGCONT)
-
-
-</code></pre>
-</div>
+#os.kill(process.pid, signal.SIGCONT)</code></pre></div>
 
     
     
@@ -499,7 +470,7 @@ print(getline(process))
 
         <footer>
 
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
 
         </footer>
        

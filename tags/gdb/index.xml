@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gdb on Master 0xCcC</title>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/asmx86args/</guid>
-      <description>Cheatsheet - x86 Args and local vars Source code int func(char a, char b, char c, char d, char e){ char f = 6, g = 7, h =8 ; printf(&amp;quot;%d %d %d %d %d\n&amp;quot;, a,b,c,d,e); return 0xC0FEE ; } int main(void){ printf(&amp;quot;%d&amp;quot;,func(1,2,3,4,5)); return 0; }  Gdb view  (gdb) disass main ... 0x00001238 &amp;lt;+29&amp;gt;: push 0x5 0x0000123a &amp;lt;+31&amp;gt;: push 0x4 0x0000123c &amp;lt;+33&amp;gt;: push 0x3 0x0000123e &amp;lt;+35&amp;gt;: push 0x2 0x00001240 &amp;lt;+37&amp;gt;: push 0x1 0x00001242 &amp;lt;+39&amp;gt;: call 0x1199 &amp;lt;func&amp;gt; .</description>
+      <description>Cheatsheet - x86 Args and local vars Source code int func(char a, char b, char c, char d, char e){ char f = 6, g = 7, h =8 ; printf(&amp;quot;%d %d %d %d %d\n&amp;quot;, a,b,c,d,e); return 0xC0FEE ; } int main(void){ printf(&amp;quot;%d&amp;quot;,func(1,2,3,4,5)); return 0; } Gdb view  (gdb) disass main ... 0x00001238 &amp;lt;+29&amp;gt;: push 0x5 0x0000123a &amp;lt;+31&amp;gt;: push 0x4 0x0000123c &amp;lt;+33&amp;gt;: push 0x3 0x0000123e &amp;lt;+35&amp;gt;: push 0x2 0x00001240 &amp;lt;+37&amp;gt;: push 0x1 0x00001242 &amp;lt;+39&amp;gt;: call 0x1199 &amp;lt;func&amp;gt; .</description>
     </item>
     
   </channel>

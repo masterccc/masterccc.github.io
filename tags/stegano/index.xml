@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>stegano on Master 0xCcC</title>
@@ -17,14 +17,14 @@
       <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/stego/</guid>
-      <description> Cheatsheet - Stego tools for pictures Stegoveritas Stegoveritas can be found here : https://github.com/bannsec/stegoVeritas
+      <description>Cheatsheet - Stego tools for pictures Stegoveritas Stegoveritas can be found here : https://github.com/bannsec/stegoVeritas
 Create several altered images (contrast/colors/brightness)
 Run with common options :
-$ stegoveritas -exif -meta -xmp -carve -imageTransform -BruteLSB -extractLSB -trailing massacre.png  Steghide Available in most of distro&amp;rsquo;s repos.
+$ stegoveritas -exif -meta -xmp -carve -imageTransform -BruteLSB -extractLSB -trailing massacre.png Steghide Available in most of distro&#39;s repos.
 Common run :
-steghide extract -sf file.jpg  Stegcracker Stegcracker can be found here : https://github.com/Paradoxis/StegCracker
+steghide extract -sf file.jpg Stegcracker Stegcracker can be found here : https://github.com/Paradoxis/StegCracker
 Performs a steghide bruteforce :
-stegcracker file.jpg /usr/share/wordlist/rockyou.txt  </description>
+stegcracker file.jpg /usr/share/wordlist/rockyou.txt </description>
     </item>
     
   </channel>

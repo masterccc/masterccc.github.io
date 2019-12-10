@@ -70,7 +70,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
+ <meta name="generator" content="Hugo 0.60.1" />
         
 
         
@@ -166,12 +166,8 @@
 </div>
 
 
-    <br> <div class="text-justify">
-
-<h1 id="cheatsheet-x86-args-and-local-vars">Cheatsheet - x86 Args and local vars</h1>
-
+    <br> <div class="text-justify"><h1 id="cheatsheet--x86-args-and-local-vars">Cheatsheet - x86 Args and local vars</h1>
 <h2 id="source-code">Source code</h2>
-
 <pre><code>int func(char a, char b, char c, char d, char e){
     char f = 6, g = 7, h =8 ;
     printf(&quot;%d %d %d %d %d\n&quot;, a,b,c,d,e);
@@ -182,10 +178,7 @@ int main(void){
     printf(&quot;%d&quot;,func(1,2,3,4,5));
     return 0;
 }
-</code></pre>
-
-<h2 id="gdb-view">Gdb view</h2>
-
+</code></pre><h2 id="gdb-view">Gdb view</h2>
 <pre><code>
 (gdb) disass main
    ...
@@ -246,30 +239,18 @@ int main(void){
    0x56217 &lt;+126&gt;:    pop    esi
    0x56218 &lt;+127&gt;:    pop    edi
    0x56219 &lt;+128&gt;:    pop    ebp
-</code></pre>
-
-<h2 id="args-order">Args order</h2>
-
+</code></pre><h2 id="args-order">Args order</h2>
 <p>Params pushed in reverse order :</p>
-
 <pre><code>push c
 push b
 push a
-</code></pre>
-
-<p>Accessible in order :</p>
-
+</code></pre><p>Accessible in order :</p>
 <pre><code>rbp+8h  = a
 rbp+ch  = b
 rpb+10h = c
-</code></pre>
-
-<p>&ndash; Run until breakpoint &ndash;</p>
-
+</code></pre><p>&ndash; Run until breakpoint &ndash;</p>
 <h1 id="stack-view">Stack view</h1>
-
 <p>Print 10 words from ebp :</p>
-
 <pre><code>(gdb) x/8x $ebp
 0xffffd4a8:   0xffffd4d8   0x56556247   0x00000001   0x00000002
               ebp          ebp+4        ebp+8        ebp+0xc
@@ -278,10 +259,7 @@ rpb+10h = c
 0xffffd4b8:   0x00000003   0x00000004   0x00000005   0xffffd584
               ebp+0x10
               arg
-</code></pre>
-
-<p>Retrieve esp from esp :</p>
-
+</code></pre><p>Retrieve esp from esp :</p>
 <pre><code>(gdb) x/80x $esp
 0xffffd460:      0x00000000      0x00c30000     0x00000005      0xf7ffc805
 0xffffd470:      0xffffd404      0x00000003     0xf7ffd002      0x00000001
@@ -292,9 +270,7 @@ rpb+10h = c
 0xffffd4c0:  arg:0x00000005      0xffffd584     0xffffd58c      0x5655622f
 0xffffd4d0:     0xffffd4f0       0x00000000     0x00000000      0xf7de4b41
 ...
-</code></pre>
-
-<p>* = 0x5655619f &lt;+6&gt;: sub esp,0x3c allocates 7 slots (0x3c = 60 ; <sup>60</sup>&frasl;<sub>8</sub>=7)</p>
+</code></pre><p>* = 0x5655619f &lt;+6&gt;: sub esp,0x3c allocates 7 slots (0x3c = 60 ; 60/8=7)</p>
 </div>
 
     
@@ -308,7 +284,7 @@ rpb+10h = c
 
         <footer>
 
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
 
         </footer>
        

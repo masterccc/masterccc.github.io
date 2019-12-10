@@ -70,7 +70,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
+ <meta name="generator" content="Hugo 0.60.1" />
         
 
         
@@ -168,112 +168,61 @@
 </div>
 
 
-    <br> <div class="text-justify">
-
-<p>This is a crackme level 3 (Medium) from <a href="https://crackmes.one/crackme/5ab77f6533c5d40ad448cbc2">https://crackmes.one/crackme/5ab77f6533c5d40ad448cbc2</a></p>
-
+    <br> <div class="text-justify"><p>This is a crackme level 3 (Medium) from <a href="https://crackmes.one/crackme/5ab77f6533c5d40ad448cbc2">https://crackmes.one/crackme/5ab77f6533c5d40ad448cbc2</a></p>
 <h1 id="fast-static-analysis">Fast static analysis</h1>
-
 <p>First, lets see what kind of file is it with <code>file</code> command :</p>
-
 <pre><code>$ file crackme.02.32
 crackme.02.32: ELF 32-bit LSB executable, Intel 80386, (SYSV), too many section (65535)
 
-</code></pre>
-
-<p>A 32 Bit ELF, with a beautiful &ldquo;too many section&rdquo;, no information about linkage or stripping. Lets go on.</p>
-
+</code></pre><p>A 32 Bit ELF, with a beautiful &ldquo;too many section&rdquo;, no information about linkage or stripping. Lets go on.</p>
 <p>Checking the strings in the binary :</p>
-
-<p><img src="/img/geyslan_str.png" alt="GitHub Logo" /></p>
-
-<p>Judging from the &ldquo;tracing not allowed&rdquo; and &ldquo;i&rsquo;m sorry GDB..&rdquo; there are some anti-debug methods.</p>
-
-<h1 id="anti-debug">Anti-debug</h1>
-
+<p><img src="/img/geyslan_str.png" alt="GitHub Logo"></p>
+<p>Judging from the &ldquo;tracing not allowed&rdquo; and &ldquo;i'm sorry GDB..&rdquo; there are some anti-debug methods.</p>
+<h1 id="antidebug">Anti-debug</h1>
 <p>Lets run the program :</p>
-
 <pre><code>$ ./crackme.02.32 
 Please tell me my password: testtest
 No! No! No! No! Try again.
-</code></pre>
-
-<p>Pretty classical, the program expects a password. This challenge is not hard to solve whithout debuging, but it&rsquo;s interesting to see what protections are applied and how to bypass them to make the analysis more comfortable.</p>
-
+</code></pre><p>Pretty classical, the program expects a password. This challenge is not hard to solve whithout debuging, but it's interesting to see what protections are applied and how to bypass them to make the analysis more comfortable.</p>
 <p>This is the tree wich determines if the program is run with a debugger, we can find it by looking at where the &ldquo;anti-debug&rdquo; strings are used :</p>
-
-<p><img src="/img/geyslan_antidbg0.png" alt="GitHub Logo" /></p>
-
+<p><img src="/img/geyslan_antidbg0.png" alt="GitHub Logo"></p>
 <p>There are two differents tests :</p>
-
 <ul>
 <li>Test if the program is run under gdb using this technic:</li>
 </ul>
-
-<p><em>&ldquo;When a process uses fork(2) to spawn a child process, the parent’s file descriptors are inherited to the new child process. In normal cases, the new process should have only FDs 0 (stdin), 1 (stdout) and 2 (stderr). However, GDB opens up some more FDs (3, 4 and 5) and never closes them, so they are inherited.&rdquo;</em></p>
-
+<p><em>&ldquo;When a process uses fork(2) to spawn a child process, the parent’s file descriptors are inherited to the new child process. In normal cases, the new process should have only FDs 0 (stdin), 1 (stdout) and 2 (stderr). However, GDB opens up some more FDs (3, 4 and 5) and never closes them, so they are inherited.&quot;</em></p>
 <p>Source: <a href="https://xorl.wordpress.com">https://xorl.wordpress.com</a></p>
-
 <p>As we can see, a file descriptor is created (pointing to /tmp), and his _fileno is checked, if fileno &gt; 5 the program quits !</p>
-
-<p><img src="/img/geyslan_antidbg1.png" alt="GitHub Logo" /></p>
-
+<p><img src="/img/geyslan_antidbg1.png" alt="GitHub Logo"></p>
 <ul>
 <li>And other block call <code>ptrace</code> function to check if the processus is traced (used by ltrace or gdb for exemple). If it is the case, the program stops :</li>
 </ul>
-
-<p><img src="/img/geyslan_antidbg.png" alt="GitHub Logo" /></p>
-
+<p><img src="/img/geyslan_antidbg.png" alt="GitHub Logo"></p>
 <p>Bypass this is easy, we can just the change the :</p>
-
 <pre><code>mov eax, ds:dword_8049C08
-</code></pre>
-
-<p>into :</p>
-
+</code></pre><p>into :</p>
 <pre><code>mov eax, 0
-</code></pre>
-
-<p>and it will never jump to the &ldquo;tracing is not allowed&rdquo; block.</p>
-
-<p>At this point, I know IDA did some special analysis because using another tool to disassemble i can&rsquo;t see where the antidebug strings are used. (If someone has the answer i&rsquo;m interested, you can pull request it).</p>
-
+</code></pre><p>and it will never jump to the &ldquo;tracing is not allowed&rdquo; block.</p>
+<p>At this point, I know IDA did some special analysis because using another tool to disassemble i can't see where the antidebug strings are used. (If someone has the answer i'm interested, you can pull request it).</p>
 <h1 id="get-the-password">Get the password</h1>
-
 <p>Following the execution stream in <code>main</code> function, we can see that our input is used as parameter and passed to a function. This function loops over the chars and applies a binary OR operation with the <code>0x90h</code> value.</p>
-
-<p><img src="/img/geyslan_while.png" alt="GitHub Logo" /></p>
-
+<p><img src="/img/geyslan_while.png" alt="GitHub Logo"></p>
 <p>Then, the return value is compared with a char array :</p>
-
-<p><img src="/img/geyslan_cmp.png" alt="GitHub Logo" /></p>
-
+<p><img src="/img/geyslan_cmp.png" alt="GitHub Logo"></p>
 <p>Little sum up :</p>
-
 <ul>
 <li>We enter a string</li>
 <li>This string is ORed with 0x90</li>
-
-<li><p>The result must match this char array :</p>
-
-<pre><code>[0xF7, 0xF8 ,0xF1 ,0xF4 ,0xF1 ,0xF8 ,0xB3 ,0xFC ,0xFC] #(I'll call it &quot;tab&quot;)
-</code></pre></li>
+<li>The result must match this char array :</li>
 </ul>
-
-<p>Something i&rsquo;m sure :</p>
-
+<pre><code>[0xF7, 0xF8 ,0xF1 ,0xF4 ,0xF1 ,0xF8 ,0xB3 ,0xFC ,0xFC] #(I'll call it &quot;tab&quot;)
+</code></pre><p>Something i'm sure :</p>
 <pre><code>OR(tab,tab) == tab
-</code></pre>
-
-<p>What if the input is exactly the same tab ?</p>
-
+</code></pre><p>What if the input is exactly the same tab ?</p>
 <pre><code>$ python2 -c 'print &quot;\xF7\xF8\xF1\xF4\xF1\xF8\xB3\xFC\xFC&quot;' | ./crackme.02.32 
 Please tell me my password: The password is correct!
 Congratulations!!!
-</code></pre>
-
-<p>If we want an ascii solution, we can remove the MSB in tab (in order to have smaller numbers which fit in the readable range of the ascii table), lets script that :</p>
-
+</code></pre><p>If we want an ascii solution, we can remove the MSB in tab (in order to have smaller numbers which fit in the readable range of the ascii table), lets script that :</p>
 <pre><code>#!/usr/bin/python3
 
 tab = [0xF7, 0xF8 ,0xF1 ,0xF4 ,0xF1 ,0xF8 ,0xB3 ,0xFC ,0xFC]
@@ -284,16 +233,11 @@ for elt in tab:
         res += chr(int(h1[1:],2)) # remove first '1'
 
 print(&quot;result : &quot;, res)
-</code></pre>
-
-<p>And the result is : <code>wxqtqx3||</code></p>
-
-<pre><code class="language-./crackme.02.32">Please tell me my password: wxqtqx3||
+</code></pre><p>And the result is : <code>wxqtqx3||</code></p>
+<pre><code class="language-./crackme.02.32" data-lang="./crackme.02.32">Please tell me my password: wxqtqx3||
 The password is correct!
 Congratulations!!!
-</code></pre>
-
-<p>In fact, there are a lot of solutions (512) because we can OR a lot of values to match the key.</p>
+</code></pre><p>In fact, there are a lot of solutions (512) because we can OR a lot of values to match the key.</p>
 </div>
 
     
@@ -307,7 +251,7 @@ Congratulations!!!
 
         <footer>
 
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
 
         </footer>
        

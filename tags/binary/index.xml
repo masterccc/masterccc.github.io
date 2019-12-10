@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>binary on Master 0xCcC</title>
@@ -17,7 +17,7 @@
       <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/rop_example/</guid>
-      <description>ROP x86_64  Local gets() x86_64 No setuid() No canary  Source code #include &amp;lt;stdio.h&amp;gt; int main() { char buffer[32]; puts(&amp;quot;Simple ROP.\n&amp;quot;); gets(buffer); return 0; }  Compilation gcc -o vuln vuln.c -fno-stack-protector -no-pie  $file vuln vuln: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=20e082fc91a594a5d0a331e84688a0d62b3b7b56, not stripped  ROP script # coding: utf-8 from pwn import * # Choose and run p = process(&amp;quot;.</description>
+      <description>ROP x86_64  Local gets() x86_64 No setuid() No canary  Source code #include &amp;lt;stdio.h&amp;gt; int main() { char buffer[32]; puts(&amp;quot;Simple ROP.\n&amp;quot;); gets(buffer); return 0; } Compilation gcc -o vuln vuln.c -fno-stack-protector -no-pie $file vuln vuln: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=20e082fc91a594a5d0a331e84688a0d62b3b7b56, not stripped ROP script # coding: utf-8 from pwn import * # Choose and run p = process(&amp;quot;./vuln&amp;quot;) # Inspect files binary = ELF(&amp;quot;.</description>
     </item>
     
   </channel>

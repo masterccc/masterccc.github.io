@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>signal on Master 0xCcC</title>
@@ -17,7 +17,7 @@
       <pubDate>Fri, 04 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/process_com/</guid>
-      <description>Cheatsheet - Python subprocess communication Imports from subprocess import Popen, PIPE  Imports for signals import signal, os  Start process process = Popen([&#39;./sum 50&#39;], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE)  Check if process is alive def isAlive(process): poll = process.poll() if poll == None: print(&amp;quot;Program running...&amp;quot;) else: print(&amp;quot;Program stopped :(&amp;quot;)  Read from stdout def getline(process): return &amp;quot;stdout : &amp;quot; + process.stdout.readline().decode(&#39;utf-8&#39;)  Write to stdin process.stdin.write((str(i)+&amp;quot;\n&amp;quot;).encode()) process.stdin.flush()  Send signals os.</description>
+      <description>Cheatsheet - Python subprocess communication Imports from subprocess import Popen, PIPE Imports for signals import signal, os Start process process = Popen([&#39;./sum 50&#39;], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE) Check if process is alive def isAlive(process): poll = process.poll() if poll == None: print(&#34;Program running...&#34;) else: print(&#34;Program stopped :(&#34;) Read from stdout def getline(process): return &#34;stdout : &#34; + process.stdout.readline().decode(&#39;utf-8&#39;) Write to stdin process.stdin.write((str(i)+&#34;\n&#34;).encode()) process.stdin.flush() Send signals os.kill(process.pid, signal.SIGSTOP) Available signals :</description>
     </item>
     
   </channel>
