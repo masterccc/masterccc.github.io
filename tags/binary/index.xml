@@ -6,18 +6,14 @@
     <description>Recent content in binary on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://masterccc.github.io/tags/binary/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://masterccc.github.io/tags/binary/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rop Example</title>
       <link>https://masterccc.github.io/memo/rop_example/</link>
       <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/rop_example/</guid>
-      <description>ROP x86_64  Local gets() x86_64 No setuid() No canary  Source code #include &amp;lt;stdio.h&amp;gt; int main() { char buffer[32]; puts(&amp;quot;Simple ROP.\n&amp;quot;); gets(buffer); return 0; } Compilation gcc -o vuln vuln.c -fno-stack-protector -no-pie $file vuln vuln: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=20e082fc91a594a5d0a331e84688a0d62b3b7b56, not stripped ROP script # coding: utf-8 from pwn import * # Choose and run p = process(&amp;quot;./vuln&amp;quot;) # Inspect files binary = ELF(&amp;quot;.</description>
+      <description>ROP x86_64 Link to heading Local gets() x86_64 No setuid() No canary Source code Link to heading #include &amp;lt;stdio.h&amp;gt; int main() { char buffer[32]; puts(&amp;#34;Simple ROP.\n&amp;#34;); gets(buffer); return 0; } Compilation Link to heading gcc -o vuln vuln.c -fno-stack-protector -no-pie $file vuln vuln: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=20e082fc91a594a5d0a331e84688a0d62b3b7b56, not stripped ROP script Link to heading # coding: utf-8 from pwn import * # Choose and run p = process(&amp;#34;.</description>
     </item>
     
   </channel>

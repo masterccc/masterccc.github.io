@@ -6,20 +6,16 @@
     <description>Recent content in apk on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://masterccc.github.io/tags/apk/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://masterccc.github.io/tags/apk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Apk - Edit and rebuild</title>
       <link>https://masterccc.github.io/memo/edit_apk/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/edit_apk/</guid>
-      <description>Cheatsheet - Apk rebuild for debug purpose This tutorial describes the different steps to edit and rebuild an apk from the apk file.
-Prerequisites This manipulation require to enable USB debugging in your android device (https://developer.android.com/studio/debug/dev-options) and have adb, apktool, jarsigner, keytool and zipalign installed on your computer. A rooted device is NOT needed.
-Get the apk from adb : First, get the path to the apk in your filesystem :</description>
+      <description>Cheatsheet - Apk rebuild for debug purpose Link to heading This tutorial describes the different steps to edit and rebuild an apk from the apk file.
+Prerequisites Link to heading This manipulation require to enable USB debugging in your android device (https://developer.android.com/studio/debug/dev-options) and have adb, apktool, jarsigner, keytool and zipalign installed on your computer. A rooted device is NOT needed.
+Get the apk from adb : Link to heading First, get the path to the apk in your filesystem :</description>
     </item>
     
   </channel>

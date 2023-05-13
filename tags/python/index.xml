@@ -6,18 +6,14 @@
     <description>Recent content in python on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://masterccc.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 04 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://masterccc.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python subprocess communication</title>
       <link>https://masterccc.github.io/memo/process_com/</link>
       <pubDate>Fri, 04 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/process_com/</guid>
-      <description>Cheatsheet - Python subprocess communication Imports from subprocess import Popen, PIPE Imports for signals import signal, os Start process process = Popen([&#39;./sum 50&#39;], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE) Check if process is alive def isAlive(process): poll = process.poll() if poll == None: print(&#34;Program running...&#34;) else: print(&#34;Program stopped :(&#34;) Read from stdout def getline(process): return &#34;stdout : &#34; + process.stdout.readline().decode(&#39;utf-8&#39;) Write to stdin process.stdin.write((str(i)+&#34;\n&#34;).encode()) process.stdin.flush() Send signals os.kill(process.pid, signal.SIGSTOP) Available signals :</description>
+      <description>Cheatsheet - Python subprocess communication Link to heading Imports Link to heading from subprocess import Popen, PIPE Imports for signals Link to heading import signal, os Start process Link to heading process = Popen([&amp;#39;./sum 50&amp;#39;], shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE) Check if process is alive Link to heading def isAlive(process): poll = process.poll() if poll == None: print(&amp;#34;Program running...&amp;#34;) else: print(&amp;#34;Program stopped :(&amp;#34;) Read from stdout Link to heading def getline(process): return &amp;#34;stdout : &amp;#34; + process.</description>
     </item>
     
   </channel>

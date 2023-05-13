@@ -6,18 +6,15 @@
     <description>Recent content in http on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://masterccc.github.io/tags/http/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://masterccc.github.io/tags/http/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Windows User-Agent</title>
       <link>https://masterccc.github.io/memo/useragent_win/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterccc.github.io/memo/useragent_win/</guid>
-      <description>Cheatsheet - Windows User-Agent Windows Version   User agent string Windows Versions     Windows NT 10.0 Windows 10   Windows NT 6.3 Windows 8.1   Windows NT 6.2 Windows 8   Windows NT 6.1 Windows 7   Windows NT 6.0 Windows Vista   Windows NT 5.2 Windows Server 2003; Windows XP x64 Edition   Windows NT 5.1 Windows XP   Windows NT 5.</description>
+      <description>Cheatsheet - Windows User-Agent Link to heading Windows Version Link to heading {.table .pure-table .table-striped .table-responsive}
+User agent string Windows Versions Windows NT 10.0 Windows 10 Windows NT 6.3 Windows 8.1 Windows NT 6.2 Windows 8 Windows NT 6.1 Windows 7 Windows NT 6.0 Windows Vista Windows NT 5.2 Windows Server 2003; Windows XP x64 Edition Windows NT 5.1 Windows XP Windows NT 5.01 Windows 2000, Service Pack 1 (SP1) Windows NT 5.</description>
     </item>
     
   </channel>

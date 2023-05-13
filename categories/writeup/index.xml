@@ -6,11 +6,7 @@
     <description>Recent content in writeup on Master 0xCcC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://masterccc.github.io/categories/writeup/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://masterccc.github.io/categories/writeup/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Crackmes.de - crackme.02.32 by geyslan</title>
       <link>https://masterccc.github.io/reverse/cm_0232/</link>
@@ -18,10 +14,10 @@
       
       <guid>https://masterccc.github.io/reverse/cm_0232/</guid>
       <description>This is a crackme level 3 (Medium) from https://crackmes.one/crackme/5ab77f6533c5d40ad448cbc2
-Fast static analysis First, lets see what kind of file is it with file command :
-$ file crackme.02.32 crackme.02.32: ELF 32-bit LSB executable, Intel 80386, (SYSV), too many section (65535) A 32 Bit ELF, with a beautiful &amp;ldquo;too many section&amp;rdquo;, no information about linkage or stripping. Lets go on.
+Fast static analysis Link to heading First, use the file command to see what kind of file it is:
+$ file crackme.02.32 crackme.02.32: ELF 32-bit LSB executable, Intel 80386, (SYSV), too many section (65535) A 32 bit ELF, with a nice &amp;ldquo;too many sections&amp;rdquo;, no other userfull information.
 Checking the strings in the binary :
-Judging from the &amp;ldquo;tracing not allowed&amp;rdquo; and &amp;ldquo;i&#39;m sorry GDB.</description>
+Judging by the &amp;ldquo;tracing not allowed&amp;rdquo; and &amp;ldquo;I&amp;rsquo;m sorry GDB&amp;hellip;&amp;rdquo; there are a few anti-debug methods out there.</description>
     </item>
     
     <item>
@@ -31,7 +27,7 @@ Judging from the &amp;ldquo;tracing not allowed&amp;rdquo; and &amp;ldquo;i&#39;
       
       <guid>https://masterccc.github.io/reverse/cm_thething/</guid>
       <description>This is a crackme level 2 (Easy) from https://crackmes.one/crackme/5ab77f5433c5d40ad448c1d6 )
-Fast static analysis First, let&#39;s see what kind of file is it with file command :
+Fast static analysis Link to heading First, let&amp;rsquo;s see what type of file it is:
 $ file thething thething: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), for GNU/Linux 2.4.1, dynamically linked, interpreter /lib/ld-linux.so.2, no section header Ok, so 32 bits ELF and dynamically linked (this detail will be useful later). Not sure if stripped or not because of the &amp;ldquo;no section header&amp;rdquo;.</description>
     </item>
     
