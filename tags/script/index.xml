@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>script on Master 0xCcC</title>
+    <link>https://masterccc.github.io/tags/script/</link>
+    <description>Recent content in script on Master 0xCcC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://masterccc.github.io/tags/script/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My bashrc</title>
+      <link>https://masterccc.github.io/memo/bashrc/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterccc.github.io/memo/bashrc/</guid>
+      <description>Typos Link to heading alias ms=&amp;#39;ls alias sls=&amp;#39;ls&amp;#39; alias sl=&amp;#39;ls&amp;#39; alias l=&amp;#39;ls&amp;#39; alias ll=&amp;#39;ls&amp;#39; alias ls=&amp;#39;ls --color=auto&amp;#39; alias gerp=&amp;#39;grep&amp;#39; alias grp=&amp;#39;grep alias grpe=&amp;#39;grep&amp;#39; alias grep=&amp;#39;grep --color=auto&amp;#39; Get files hashes Link to heading geth(){ echo &amp;#34;$1 :&amp;#34; md5sum &amp;lt; &amp;#34;$1&amp;#34; | tr -d &amp;#39;-&amp;#39; sha1sum &amp;lt; &amp;#34;$1&amp;#34; | tr -d &amp;#39;-&amp;#39; sha256sum &amp;lt;&amp;#34;$1&amp;#34; | tr -d &amp;#39;-&amp;#39; ssdeep &amp;lt; &amp;#34;$1&amp;#34; | tail -n 1 | cut -d &amp;#34;,&amp;#34; -f 1 } alias h=&amp;#39;geth&amp;#39; Output :</description>
+    </item>
+    
+  </channel>
+</rss>
